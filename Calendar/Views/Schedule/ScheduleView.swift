@@ -10,7 +10,7 @@ import Combine
 
 struct ScheduleView: View {
     
-    @ObservedObject var viewModel: ScheduleViewModel
+    @ObservedObject private var viewModel: ScheduleViewModel
     @Environment(\.managedObjectContext) var viewContext
     
     init(viewModel: ScheduleViewModel) {

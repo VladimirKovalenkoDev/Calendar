@@ -8,15 +8,27 @@
 import SwiftUI
 
 struct CalendarView: View {
+    
+    @ObservedObject private var viewModel: CalendarViewModel
+    
+    init(viewModel: CalendarViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
+        monthView
+    }
+    
+    var monthView: some View {
         VStack(spacing: 35) {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("year")
+                    Text(viewModel.getMonthAndYear()[1])
                         .font(.caption)
                         .fontWeight(.semibold)
-                    Text("September")
+                    Text(viewModel.getMonthAndYear()[0])
                         .font(.title.bold())
+                        .textCase(.uppercase)
                 }
                 .padding(.horizontal)
                Spacer()
@@ -29,12 +41,25 @@ struct CalendarView: View {
                         .frame(maxWidth: .infinity)
                 }
             }
+            let columns = Array(
+                repeating: GridItem(.flexible()),
+                count: 7
+            )
+            LazyVGrid(columns: columns, spacing: 15) {
+                ForEach(viewModel.extractDate()) { value in
+                    CardView(value: value)
+                }
+            }
         }
     }
-}
-
-struct Calendar_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView()
+    
+    @ViewBuilder
+    func CardView(value: DateValue) -> some View {
+        VStack {
+            if value.day != -1 {
+                Text("\(value.day)")
+            }
+        }
+       
     }
 }

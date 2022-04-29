@@ -18,7 +18,7 @@ struct CalendarApp: App {
 //                                              coordinator: coordinator)
 //            ScheduleView(viewModel: viewModel)
 //                .environment(\.managedObjectContext, viewContext)
-            CalendarView()
+            CalendarView(viewModel: CalendarViewModel())
         }
     }
 }
