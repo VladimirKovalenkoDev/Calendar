@@ -16,10 +16,28 @@ struct CalendarView: View {
     }
     
     var body: some View {
-        monthView
+                        List(viewModel.currentMonth..<12) { month in
+                            CalendarList(month: month)
+                        }
+                        .listStyle(.plain)
+    }
+        
+    @ViewBuilder
+    func CardView(value: DateValue) -> some View {
+        VStack {
+            if value.day != -1 {
+                Text("\(value.day)")
+            }
+        }
+        .padding(.vertical, 8)
+        .frame(
+               height: 60,
+               alignment: .top
+        )
     }
     
-    var monthView: some View {
+    @ViewBuilder
+    func CalendarList(month: Int) -> some View {
         VStack(spacing: 35) {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
@@ -42,24 +60,14 @@ struct CalendarView: View {
                 }
             }
             let columns = Array(
-                repeating: GridItem(.flexible()),
+                repeating: GridItem(.flexible(), spacing: 15, alignment: .center),
                 count: 7
             )
             LazyVGrid(columns: columns, spacing: 15) {
-                ForEach(viewModel.extractDate()) { value in
+                ForEach(viewModel.extractDate(currentMonth: month)) { value in
                     CardView(value: value)
                 }
             }
         }
-    }
-    
-    @ViewBuilder
-    func CardView(value: DateValue) -> some View {
-        VStack {
-            if value.day != -1 {
-                Text("\(value.day)")
-            }
-        }
-       
     }
 }
