@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-//@MainActor
+@MainActor
 final class CalendarViewModel: NSObject, ObservableObject {
     
     @Published var currentMonth: Int

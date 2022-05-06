@@ -16,24 +16,66 @@ struct CalendarView: View {
     }
     
     var body: some View {
-                        List(viewModel.currentMonth..<12) { month in
-                            CalendarList(month: month)
-                        }
-                        .listStyle(.plain)
+        NavigationView {
+            List(viewModel.currentMonth..<12) { month in
+                CalendarList(month: month)
+            }
+            .listStyle(.plain)
+            .navigationTitle("Month")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add") {
+                        print("Help tapped!")
+                    }
+                }
+            }
+        }
     }
-        
+    
     @ViewBuilder
     func CardView(value: DateValue) -> some View {
         VStack {
             if value.day != -1 {
-                Text("\(value.day)")
-               
+                if let task = viewModel.events.first(
+                    where: { task in
+                        return viewModel.isSameDate(
+                            first: task.eventDate,
+                            second: value.date
+                        )
+                    }
+                ) {
+                    Text("\(value.day)")
+                        .foregroundColor(viewModel
+                                            .isSameDate(first: task.eventDate,
+                                                        second: viewModel.currentDate) ? .white:
+                                                .primary)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
+                    Circle()
+                        .fill(
+                            viewModel
+                                .isSameDate(first: task.eventDate,
+                                            second: viewModel.currentDate) ? .white:
+                                Color.red
+                        )
+                        .frame(width: 8, height: 8)
+                } else {
+                    Text("\(value.day)")
+                        .foregroundColor(viewModel
+                                            .isSameDate(first: value.date,
+                                                        second: viewModel.currentDate) ? .white: .primary)
+                        .frame(maxWidth: .infinity)
+                    
+                    Spacer()
+                }
+                
             }
         }
         .padding(.vertical, 8)
         .frame(
-               height: 60,
-               alignment: .top
+            height: 60,
+            alignment: .top
         )
     }
     
@@ -50,7 +92,7 @@ struct CalendarView: View {
                         .textCase(.uppercase)
                 }
                 .padding(.horizontal)
-               Spacer()
+                Spacer()
             }
             HStack(spacing: 0) {
                 ForEach(C.days, id: \.self){ day in
@@ -68,11 +110,18 @@ struct CalendarView: View {
                 ForEach(viewModel.extractDate(currentMonth: month)) { value in
                     CardView(value: value)
                         .background(
-                           RoundedRectangle(cornerRadius: 5)
+                            RoundedRectangle(cornerRadius: 5)
                                 .fill(Color.gray)
                                 .padding(.horizontal, 8)
-                                //.opacity()
+                                .opacity(
+                                    viewModel
+                                        .isSameDate(first: value.date,
+                                                    second: viewModel.currentDate) ? 1 : 0
+                                )
                         )
+                        .onTapGesture {
+                            viewModel.currentDate = value.date
+                        }
                 }
             }
         }
