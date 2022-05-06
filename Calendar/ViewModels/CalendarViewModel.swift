@@ -6,16 +6,39 @@
 //
 
 import Foundation
+import CoreData
 
-final class CalendarViewModel: ObservableObject {
+//@MainActor
+final class CalendarViewModel: NSObject, ObservableObject {
     
     @Published var currentMonth: Int
     @Published var currentDate: Date
+    @Published var events = [EventViewModel]()
+    private let fetchedResultsController: NSFetchedResultsController<Events>
+    private (set) var context: NSManagedObjectContext
     
-    init() {
+    init(context: NSManagedObjectContext) {
         self.currentMonth = 0
         self.currentDate = Date()
-        
+        self.context = context
+        fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: Events.all,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        super.init()
+        fetchedResultsController.delegate = self
+    }
+    
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+            guard let events = fetchedResultsController.fetchedObjects else { return }
+            self.events = events.map(EventViewModel.init)
+        } catch {
+            print(error)
+        }
     }
     
     func extractDate(currentMonth: Int) -> [DateValue] {
@@ -57,10 +80,16 @@ final class CalendarViewModel: ObservableObject {
         return days
     }
     
-    func getMonthAndYear() -> [String] {
+    func getMonthAndYear(currentMonth: Int) -> [String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "LLLL YYYY"
-        let date = formatter.string(from: currentDate)
+        let calendar = Calendar.current
+        guard let currentMonth = calendar.date(
+            byAdding: .month,
+            value: currentMonth,
+            to: Date()
+        ) else { return [] }
+        let date = formatter.string(from: currentMonth)
         return date.components(separatedBy: " ")
     }
     
@@ -72,5 +101,18 @@ final class CalendarViewModel: ObservableObject {
             to: Date()
         ) else { return Date() }
         return currentMonth
+    }
+    
+    func isSameDate(first: Date, second: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(first, inSameDayAs: second)
+    }
+}
+
+extension CalendarViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if let events = controller.fetchedObjects as? [Events] {
+            self.events = events.map(EventViewModel.init)
+        }
     }
 }

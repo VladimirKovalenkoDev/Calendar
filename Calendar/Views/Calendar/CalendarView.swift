@@ -27,6 +27,7 @@ struct CalendarView: View {
         VStack {
             if value.day != -1 {
                 Text("\(value.day)")
+               
             }
         }
         .padding(.vertical, 8)
@@ -41,10 +42,10 @@ struct CalendarView: View {
         VStack(spacing: 35) {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(viewModel.getMonthAndYear()[1])
+                    Text(viewModel.getMonthAndYear(currentMonth: month)[1])
                         .font(.caption)
                         .fontWeight(.semibold)
-                    Text(viewModel.getMonthAndYear()[0])
+                    Text(viewModel.getMonthAndYear(currentMonth: month)[0])
                         .font(.title.bold())
                         .textCase(.uppercase)
                 }
@@ -66,6 +67,12 @@ struct CalendarView: View {
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(viewModel.extractDate(currentMonth: month)) { value in
                     CardView(value: value)
+                        .background(
+                           RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.gray)
+                                .padding(.horizontal, 8)
+                                //.opacity()
+                        )
                 }
             }
         }
