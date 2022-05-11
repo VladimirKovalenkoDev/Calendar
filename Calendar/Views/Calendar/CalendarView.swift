@@ -10,17 +10,29 @@ import SwiftUI
 struct CalendarView: View {
     
     @ObservedObject private var viewModel: CalendarViewModel
-    @State var isPresented: Bool
+    @State var isNewEventViewPresented: Bool
+    @State var isScheduleViewActive: Bool
     
     init(viewModel: CalendarViewModel) {
         self.viewModel = viewModel
-        self.isPresented = false
+        self.isNewEventViewPresented = false
+        self.isScheduleViewActive = false
     }
     
     var body: some View {
         NavigationView {
             List(viewModel.currentMonth..<12) { month in
-                CalendarList(month: month)
+                ZStack {
+                    CalendarList(month: month)
+                    NavigationLink("",
+                                   destination: ScheduleView(
+                                    viewModel: ScheduleViewModel(
+                                        context: viewModel.context
+                                    )
+                                   ),
+                                   isActive: $isScheduleViewActive)
+                        .hidden()
+                }
             }
             .listStyle(.plain)
             .navigationTitle("Month")
@@ -28,14 +40,14 @@ struct CalendarView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        isPresented.toggle()
+                        isNewEventViewPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
                     }
-                    .sheet(isPresented: $isPresented) {
+                    .sheet(isPresented: $isNewEventViewPresented) {
                         NewEventView()
                     }
-
+                    
                 }
             }
         }
@@ -129,6 +141,7 @@ struct CalendarView: View {
                         )
                         .onTapGesture {
                             viewModel.currentDate = value.date
+                            isScheduleViewActive.toggle()
                         }
                 }
             }

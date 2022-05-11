@@ -13,11 +13,6 @@ struct CalendarApp: App {
     var body: some Scene {
         WindowGroup {
             let viewContext = CoreManager.shared.container.viewContext
-            let viewModel = ScheduleViewModel(context: viewContext)
-//                                              ,
-//                                              coordinator: coordinator)
-//            ScheduleView(viewModel: viewModel)
-//                .environment(\.managedObjectContext, viewContext)
             CalendarView(viewModel: CalendarViewModel(context: viewContext))
         }
     }

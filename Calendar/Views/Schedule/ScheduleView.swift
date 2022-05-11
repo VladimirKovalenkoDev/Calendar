@@ -25,18 +25,19 @@ struct ScheduleView: View {
     var body: some View {
         NavigationView {
             VStack {
-                DatePicker(
-                    "Select Day",
-                    selection: $viewModel.chosenDate,
-                    displayedComponents: .date
-                )
-                    .datePickerStyle(.compact)
-                    .padding(.top, 8)
-                    .padding(.leading, 16)
-                    .padding(.trailing, 16)
+//                DatePicker(
+//                    "Select Day",
+//                    selection: $viewModel.chosenDate,
+//                    displayedComponents: .date
+//                )
+//                    .datePickerStyle(.compact)
+//                    .padding(.top, 8)
+//                    .padding(.leading, 16)
+//                    .padding(.trailing, 16)
 //                    .onChange(of: viewModel.chosenDate, perform: { _ in
 //                        print("change")
 //                    })
+                Text("\(currentDate)")
                 ScrollView {
                     ScrollViewReader { proxy in
                         GeometryReader { _ in
@@ -64,13 +65,6 @@ struct ScheduleView: View {
                 .padding(.top, 8)
             }
             .navigationBarTitle("Schedule", displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                print("Edit button pressed...")
-            }) {
-                Image(systemName: "plus.circle")
-            }
-            )
         }
     }
     
