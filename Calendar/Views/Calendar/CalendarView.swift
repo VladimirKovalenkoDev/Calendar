@@ -10,9 +10,11 @@ import SwiftUI
 struct CalendarView: View {
     
     @ObservedObject private var viewModel: CalendarViewModel
+    @State var isPresented: Bool
     
     init(viewModel: CalendarViewModel) {
         self.viewModel = viewModel
+        self.isPresented = false
     }
     
     var body: some View {
@@ -25,9 +27,15 @@ struct CalendarView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add") {
-                        print("Help tapped!")
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        Image(systemName: "plus")
                     }
+                    .sheet(isPresented: $isPresented) {
+                        NewEventView()
+                    }
+
                 }
             }
         }
