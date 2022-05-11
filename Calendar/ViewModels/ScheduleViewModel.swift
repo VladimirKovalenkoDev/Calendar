@@ -17,11 +17,11 @@ final class ScheduleViewModel: ObservableObject {
     @Published var isPresented: Bool
    // private unowned let coordinator: CalendarCoordinator
     
-    init(context: NSManagedObjectContext)
+    init(context: NSManagedObjectContext, chosenDate: Date)
 //         ,
 //         coordinator: CalendarCoordinator)
     {
-        self.chosenDate = Date()
+        self.chosenDate = chosenDate
         self.context = context
         self.isPresented = false
       //  self.coordinator = coordinator

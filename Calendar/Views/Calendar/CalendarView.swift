@@ -27,7 +27,8 @@ struct CalendarView: View {
                     NavigationLink("",
                                    destination: ScheduleView(
                                     viewModel: ScheduleViewModel(
-                                        context: viewModel.context
+                                        context: viewModel.context,
+                                        chosenDate: viewModel.currentDate
                                     )
                                    ),
                                    isActive: $isScheduleViewActive)

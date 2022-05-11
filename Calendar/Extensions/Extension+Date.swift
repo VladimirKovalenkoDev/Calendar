@@ -21,6 +21,12 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func dateWithDayOfTheWeek() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE dd MMMM YYYY"
+        return formatter.string(from: self).capitalized
+    }
+    
     func getAllDates() -> [Date] {
         let calendar = Calendar.current
         

@@ -37,7 +37,7 @@ struct ScheduleView: View {
 //                    .onChange(of: viewModel.chosenDate, perform: { _ in
 //                        print("change")
 //                    })
-                Text("\(currentDate)")
+                Text(viewModel.chosenDate.dateWithDayOfTheWeek())
                 ScrollView {
                     ScrollViewReader { proxy in
                         GeometryReader { _ in
