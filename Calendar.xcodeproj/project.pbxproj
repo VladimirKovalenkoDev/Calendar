@@ -27,6 +27,9 @@
 		BFA471132817FB240093253F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA471122817FB240093253F /* Constants.swift */; };
 		BFA47115281816820093253F /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA47114281816820093253F /* DateValue.swift */; };
 		BFA47117281818900093253F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA47116281818900093253F /* CalendarViewModel.swift */; };
+		BFCE216828251FC500671A51 /* Extention+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216728251FC500671A51 /* Extention+Events.swift */; };
+		BFCE216A2825200200671A51 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE21692825200200671A51 /* BaseModel.swift */; };
+		BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216B2825256400671A51 /* EventViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		BFA471122817FB240093253F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFA47114281816820093253F /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		BFA47116281818900093253F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		BFCE216728251FC500671A51 /* Extention+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+Events.swift"; sourceTree = "<group>"; };
+		BFCE21692825200200671A51 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		BFCE216B2825256400671A51 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 			children = (
 				BFA470DE280D4CF90093253F /* ScheduleViewModel.swift */,
 				BFA47116281818900093253F /* CalendarViewModel.swift */,
+				BFCE216B2825256400671A51 /* EventViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -192,6 +199,7 @@
 			children = (
 				BFA470B1280D3FE50093253F /* Calendar.xcdatamodeld */,
 				BFA47114281816820093253F /* DateValue.swift */,
+				BFCE21692825200200671A51 /* BaseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 			children = (
 				BFA470EB281186760093253F /* Extension+Date.swift */,
 				BFA471122817FB240093253F /* Constants.swift */,
+				BFCE216728251FC500671A51 /* Extention+Events.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -377,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFA470DF280D4CF90093253F /* ScheduleViewModel.swift in Sources */,
+				BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */,
 				BFA470D6280D46CA0093253F /* ScheduleView.swift in Sources */,
 				BFA470E5280EEF170093253F /* CalendarCoordinator.swift in Sources */,
 				BFA470B0280D3FE50093253F /* Persistence.swift in Sources */,
@@ -387,10 +397,12 @@
 				BFA471132817FB240093253F /* Constants.swift in Sources */,
 				BFA47117281818900093253F /* CalendarViewModel.swift in Sources */,
 				BFA471102817EF1B0093253F /* CalendarView.swift in Sources */,
+				BFCE216A2825200200671A51 /* BaseModel.swift in Sources */,
 				BFA470E3280D4D8B0093253F /* CoreManager.swift in Sources */,
 				BFA470DC280D48680093253F /* CurrentTimeView.swift in Sources */,
 				BFA470DA280D48560093253F /* ScheduleRowView.swift in Sources */,
 				BFA470EC281186760093253F /* Extension+Date.swift in Sources */,
+				BFCE216828251FC500671A51 /* Extention+Events.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
