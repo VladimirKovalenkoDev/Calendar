@@ -12,9 +12,13 @@ import SwiftUI
 
 final class ScheduleViewModel: ObservableObject {
     
-    private (set) var context: NSManagedObjectContext
     @Published var chosenDate: Date
-    @Published var isPresented: Bool
+    @Published var isPresented: Bool = false
+    @Published var currentTimeHourPosition: Float = Float()
+    private (set) var context: NSManagedObjectContext
+    private var timeSubscriber: Cancellable?
+    private var currentDate: Date = .init()
+    private var timer: Timer.TimerPublisher = Timer.publish(every: 0, on: .main, in: .common)
    // private unowned let coordinator: CalendarCoordinator
     
     init(context: NSManagedObjectContext, chosenDate: Date)
@@ -23,8 +27,31 @@ final class ScheduleViewModel: ObservableObject {
     {
         self.chosenDate = chosenDate
         self.context = context
-        self.isPresented = false
       //  self.coordinator = coordinator
+    }
+    
+    func viewDidAppear() {
+        makeTimeLinePosition()
+    }
+    
+    func viewDisappear() {
+        timeSubscriber?.cancel()
+        timeSubscriber = nil
+    }
+    
+    private func makeTimeLinePosition() {
+        currentTimeHourPosition = getCurrentTimePosition(date: currentDate)
+        timeSubscriber?.cancel()
+        timeSubscriber = timer.autoconnect().sink { [weak self] output in
+            self?.chosenDate = output
+            self?.currentTimeHourPosition = self?.getCurrentTimePosition(date: output) ?? 0
+        }
+    }
+    
+    func getCurrentTimePosition(date: Date) -> Float {
+        let calendar = Calendar.current
+        return Float(calendar.component(.hour, from: date)) +
+        Float(calendar.component(.minute, from: date)) / 60
     }
     
     func getTime(index: Int) -> String {
@@ -49,5 +76,10 @@ final class ScheduleViewModel: ObservableObject {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
-    }    
+    }
+    
+    func isSameDate(first: Date, second: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(first, inSameDayAs: second)
+    }
 }

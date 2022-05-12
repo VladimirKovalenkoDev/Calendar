@@ -15,14 +15,16 @@ struct ScheduleView: View {
     
     init(viewModel: ScheduleViewModel) {
         self.viewModel = viewModel
+        
     }
     
-    @State var start: CGFloat = 0.0
-    let timer = Timer.publish(every: 0, on: .main, in: .common).autoconnect()
-    @State var currentDate = Date()
-    
-    
     var body: some View {
+        content
+            .onAppear(perform: viewModel.viewDidAppear)
+            .onDisappear(perform: viewModel.viewDisappear)
+    }
+    
+    var content: some View {
         NavigationView {
             VStack {
 //                DatePicker(
@@ -41,17 +43,25 @@ struct ScheduleView: View {
                 ScrollView {
                     ScrollViewReader { proxy in
                         GeometryReader { _ in
-                            timeTracker
-                                .padding(.leading, 20)
-                                .padding(.top, start)
-                                .padding(.top, 24)
-                                .id(1)
+                            if viewModel.isSameDate(
+                                first: viewModel.chosenDate,
+                                second: Date()
+                            ) {
+                                timeTracker
+                                    .padding(.leading, 20)
+                                    .padding(.top, CGFloat(86 * viewModel.currentTimeHourPosition))
+                                    .padding(.top, 24)
+                                    .id(1)
+                            } else {
+                                timeTracker.hidden()
+                            }
+                            
                             timeLine
                                 .padding(.top, 24)
                                 .id(2)
                     }
                         .onAppear {
-                            proxy.scrollTo(2, anchor: .center)
+                            proxy.scrollTo(1, anchor: .bottom)
                         }
                     }
                         VStack {
@@ -75,10 +85,6 @@ struct ScheduleView: View {
     
     var timeTracker: some View {
         CurrentTimeView(time: viewModel.chosenDate.timeIn24HourFormat())
-            .onReceive(timer, perform: { input in
-                start = CGFloat(86 * (viewModel.getHour(date: input) + viewModel.getMinute(date: input) / 60))
-                currentDate = input
-            })
             .frame(width: UIScreen.main.bounds.size.width, height: 0)
     }
     

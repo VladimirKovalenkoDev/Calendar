@@ -10,12 +10,10 @@ import SwiftUI
 struct NewEventView: View {
     
     @Environment(\.dismiss) var dismiss
-//    @Binding var isPresented: Bool
-//    @Binding var chosenDate: Date
     
     var body: some View {
         Text("ddd")
-//        VStack{
+        VStack{
 //            DatePicker(
 //                "Select Day",
 //                selection: $chosenDate,
@@ -28,10 +26,10 @@ struct NewEventView: View {
 //                .onChange(of: chosenDate, perform: { _ in
 //                    print("change")
 //                })
-//            Button("Done") {
-//                isPresented = false
-//            }
-//
-//        }
+            Button("Done") {
+                dismiss()
+            }
+
+        }
     }
 }
