@@ -10,26 +10,40 @@ import SwiftUI
 struct NewEventView: View {
     
     @Environment(\.dismiss) var dismiss
+    @ObservedObject private var viewModel: NewEventViewModel
+    
+    init(viewModel: NewEventViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
-        Text("ddd")
-        VStack{
-//            DatePicker(
-//                "Select Day",
-//                selection: $chosenDate,
-//                displayedComponents: .date
-//            )
-//                .datePickerStyle(.graphical)
-//                .padding(.top, 24)
-//                .padding(.leading, 16)
-//                .padding(.trailing, 16)
-//                .onChange(of: chosenDate, perform: { _ in
-//                    print("change")
-//                })
-            Button("Done") {
-                dismiss()
+        NavigationView {
+            Form {
+                Section() {
+                    TextField("Title", text: $viewModel.eventName)
+                }
+                Section() {
+                    VStack {
+                        DatePicker(selection: $viewModel.startTime, in: Date()...) {
+                            Text("Starts")
+                        }
+                        DatePicker(selection: $viewModel.endTime, in: viewModel.startTime...) {
+                            Text("Ends")
+                        }
+                    }
+                }
             }
-
+            .navigationTitle("New Event")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add") {
+                        viewModel.save()
+                        dismiss()
+                    }
+                }
+            }
+            
         }
     }
 }

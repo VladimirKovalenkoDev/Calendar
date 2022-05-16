@@ -46,7 +46,7 @@ struct CalendarView: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $isNewEventViewPresented) {
-                        NewEventView()
+                        NewEventView(viewModel: NewEventViewModel(context: viewModel.context))
                     }
                     
                 }
@@ -61,14 +61,14 @@ struct CalendarView: View {
                 if let task = viewModel.events.first(
                     where: { task in
                         return viewModel.isSameDate(
-                            first: task.eventDate,
+                            first: task.startTime,
                             second: value.date
                         )
                     }
                 ) {
                     Text("\(value.day)")
                         .foregroundColor(viewModel
-                                            .isSameDate(first: task.eventDate,
+                                            .isSameDate(first: task.startTime,
                                                         second: viewModel.currentDate) ? .white:
                                                 .primary)
                         .frame(maxWidth: .infinity)
@@ -76,7 +76,7 @@ struct CalendarView: View {
                     Circle()
                         .fill(
                             viewModel
-                                .isSameDate(first: task.eventDate,
+                                .isSameDate(first: task.startTime,
                                             second: viewModel.currentDate) ? .white:
                                 Color.red
                         )

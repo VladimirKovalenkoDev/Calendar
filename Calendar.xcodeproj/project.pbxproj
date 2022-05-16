@@ -30,6 +30,7 @@
 		BFCE216828251FC500671A51 /* Extention+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216728251FC500671A51 /* Extention+Events.swift */; };
 		BFCE216A2825200200671A51 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE21692825200200671A51 /* BaseModel.swift */; };
 		BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216B2825256400671A51 /* EventViewModel.swift */; };
+		BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216D282D632D00671A51 /* NewEventViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		BFCE216728251FC500671A51 /* Extention+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention+Events.swift"; sourceTree = "<group>"; };
 		BFCE21692825200200671A51 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		BFCE216B2825256400671A51 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		BFCE216D282D632D00671A51 /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				BFA470DE280D4CF90093253F /* ScheduleViewModel.swift */,
 				BFA47116281818900093253F /* CalendarViewModel.swift */,
 				BFCE216B2825256400671A51 /* EventViewModel.swift */,
+				BFCE216D282D632D00671A51 /* NewEventViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				BFA470E5280EEF170093253F /* CalendarCoordinator.swift in Sources */,
 				BFA470B0280D3FE50093253F /* Persistence.swift in Sources */,
 				BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */,
+				BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */,
 				BFA47115281816820093253F /* DateValue.swift in Sources */,
 				BFA470F32812E1D70093253F /* NewEventView.swift in Sources */,
 				BFA470B3280D3FE50093253F /* Calendar.xcdatamodeld in Sources */,
