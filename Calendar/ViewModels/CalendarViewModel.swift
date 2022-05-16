@@ -29,6 +29,7 @@ final class CalendarViewModel: NSObject, ObservableObject {
         )
         super.init()
         fetchedResultsController.delegate = self
+        performFetch()
     }
     
     private func performFetch() {
@@ -37,7 +38,7 @@ final class CalendarViewModel: NSObject, ObservableObject {
             guard let events = fetchedResultsController.fetchedObjects else { return }
             self.events = events.map(EventViewModel.init)
         } catch {
-            print(error)
+            print("Fetch error: \(error)")
         }
     }
     

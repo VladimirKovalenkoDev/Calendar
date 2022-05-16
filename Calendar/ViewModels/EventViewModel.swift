@@ -27,11 +27,11 @@ struct EventViewModel: Identifiable {
         event.eventName ?? ""
     }
     
-    var startTime: String {
-        event.startTime ?? ""
+    var startTime: Date {
+        event.startTime ?? Date()
     }
     
-    var endTime: String {
-        event.endTime ?? ""
+    var endTime: Date {
+        event.endTime ?? Date()
     }
 }
