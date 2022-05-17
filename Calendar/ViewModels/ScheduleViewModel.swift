@@ -10,14 +10,16 @@ import Combine
 import CoreData
 import SwiftUI
 
-final class ScheduleViewModel: ObservableObject {
+final class ScheduleViewModel: NSObject, ObservableObject {
     
     @Published var chosenDate: Date
     @Published var isPresented: Bool = false
     @Published var currentTimeHourPosition: Float = Float()
+    @Published var events = [EventViewModel]()
+    @Published var currentDate: Date = .init()
+    private let fetchedResultsController: NSFetchedResultsController<Events>
     private (set) var context: NSManagedObjectContext
     private var timeSubscriber: Cancellable?
-    private var currentDate: Date = .init()
     private var timer: Timer.TimerPublisher = Timer.publish(every: 0, on: .main, in: .common)
    // private unowned let coordinator: CalendarCoordinator
     
@@ -27,11 +29,30 @@ final class ScheduleViewModel: ObservableObject {
     {
         self.chosenDate = chosenDate
         self.context = context
+        fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: Events.all,
+            managedObjectContext: context,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        super.init()
+        fetchedResultsController.delegate = self
       //  self.coordinator = coordinator
+    }
+    
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+            guard let events = fetchedResultsController.fetchedObjects else { return }
+            self.events = events.map(EventViewModel.init)
+        } catch {
+            print("Fetch error: \(error)")
+        }
     }
     
     func viewDidAppear() {
         makeTimeLinePosition()
+        performFetch()
     }
     
     func viewDisappear() {
@@ -43,7 +64,7 @@ final class ScheduleViewModel: ObservableObject {
         currentTimeHourPosition = getCurrentTimePosition(date: currentDate)
         timeSubscriber?.cancel()
         timeSubscriber = timer.autoconnect().sink { [weak self] output in
-            self?.chosenDate = output
+            self?.currentDate = output
             self?.currentTimeHourPosition = self?.getCurrentTimePosition(date: output) ?? 0
         }
     }
@@ -81,5 +102,13 @@ final class ScheduleViewModel: ObservableObject {
     func isSameDate(first: Date, second: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(first, inSameDayAs: second)
+    }
+}
+
+extension ScheduleViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if let events = controller.fetchedObjects as? [Events] {
+            self.events = events.map(EventViewModel.init)
+        }
     }
 }
