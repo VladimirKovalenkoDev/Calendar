@@ -56,9 +56,9 @@ struct ScheduleView: View {
                                 timeTracker.hidden()
                             }
                             
-                            timeLine
-                                .padding(.top, 24)
-                                .id(2)
+//                            timeLine
+//                                .padding(.top, 24)
+//                                .id(2)
                     }
                         .onAppear {
                             proxy.scrollTo(1, anchor: .bottom)
@@ -79,12 +79,12 @@ struct ScheduleView: View {
     }
     
     
-    var timeLine: some View {
-        Text("Text")
-    }
+//    var timeLine: some View {
+//        Text("Text")
+//    }
     
     var timeTracker: some View {
-        CurrentTimeView(time: viewModel.chosenDate.timeIn24HourFormat())
+        CurrentTimeView(time: viewModel.currentDate.timeIn24HourFormat())
             .frame(width: UIScreen.main.bounds.size.width, height: 0)
     }
     
