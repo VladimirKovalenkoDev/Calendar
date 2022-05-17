@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct EventViewModel: Identifiable {
+struct EventViewModel: Identifiable, Hashable {
     private var event: Events
     
     init(event: Events) {
@@ -19,8 +19,8 @@ struct EventViewModel: Identifiable {
         event.objectID
     }
     
-    var eventDate: Date {
-        event.eventDate ?? Date()
+    var eventDate: String {
+        event.eventDate ?? ""
     }
     
     var eventName: String {

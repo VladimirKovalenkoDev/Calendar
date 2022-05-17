@@ -56,9 +56,9 @@ struct ScheduleView: View {
                                 timeTracker.hidden()
                             }
                             
-//                            timeLine
-//                                .padding(.top, 24)
-//                                .id(2)
+                            timeLine
+                                .padding(.top, 24)
+                                .id(2)
                     }
                         .onAppear {
                             proxy.scrollTo(1, anchor: .bottom)
@@ -66,7 +66,7 @@ struct ScheduleView: View {
                     }
                         VStack {
                             ForEach(0..<25) { index in
-                                ScheduleRowView(time: viewModel.getTime(index: index))
+                                ScheduleRowView(time: getTime(index: index))
                                     .frame(width: UIScreen.main.bounds.size.width, height: 78)
                                 
                             }.padding(.leading, 20)
@@ -79,40 +79,45 @@ struct ScheduleView: View {
     }
     
     
-//    var timeLine: some View {
-//        Text("Text")
-//    }
+    var timeLine: some View {
+        ForEach(0..<viewModel.drawableEvents.count) { index in
+            let count = 1
+            let width = UIScreen.main.bounds.size.width
+            let columnWidth = (width - 62 + CGFloat(4 - (count * 2))
+            ) / CGFloat(count)
+            let drawEvent = viewModel.drawableEvents[index]
+            EventLayoutView(
+                title: drawEvent.name,
+                color: Color.red,
+                width: columnWidth,
+                height: CGFloat(86 * drawEvent.duration)
+            )
+                .frame(width: columnWidth,
+                       height: CGFloat(86 * drawEvent.duration))
+                .padding(.top, CGFloat(86 * drawEvent.start))
+                .padding(.leading, getStartPoint(columnWidth: columnWidth, columnIndex: 0))
+        }
+    }
     
     var timeTracker: some View {
         CurrentTimeView(time: viewModel.currentDate.timeIn24HourFormat())
             .frame(width: UIScreen.main.bounds.size.width, height: 0)
     }
+}
+
+extension ScheduleView {
+    func getStartPoint(columnWidth: CGFloat, columnIndex: Int) -> CGFloat {
+        if columnIndex > 0 {
+            return columnWidth * CGFloat(columnIndex) + 68 + CGFloat(2 * columnIndex)
+        }
+        return 68
+    }
     
-//    var datePicker: some View {
-//        HStack {
-//            Text("\(viewModel.chosenDate.dateWithShortMonth())")
-//                .padding(.leading, 36)
-//            Spacer()
-//            Button {
-//                viewModel.isPresented = true
-//            } label: {
-//                Image(systemName: "calendar")
-//            }
-//            .sheet(isPresented: $viewModel.isPresented) {
-//                NewEventView(
-//                    isPresented: $viewModel.isPresented,
-//                    chosenDate: $viewModel.chosenDate
-//                )
-//            }
-//            .frame(width: 40, height: 40, alignment: .center)
-//            .padding(.trailing, 36)
-//        }
-//            .frame(width: UIScreen.main.bounds.size.width, height: 56)
-//            .padding(.leading, -20)
-//            .padding(.trailing, -20)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 5)
-//                    .stroke(Color.gray, lineWidth: 1)
-//            )
-//    }
+    func getTime(index: Int) -> String {
+        if index < 10 {
+            return "0\(index):00"
+        } else {
+            return "\(index):00"
+        }
+    }
 }

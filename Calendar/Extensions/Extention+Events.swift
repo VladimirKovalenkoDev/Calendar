@@ -14,4 +14,11 @@ extension Events: BaseModel {
         request.sortDescriptors = []
         return request
     }
+    
+    static var byDate: NSFetchRequest<Events> {
+        let request = Events.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Events.startTime),
+                                                    ascending: true)]
+        return request
+    }
 }

@@ -22,7 +22,7 @@ final class CoreManager {
                     if let error = error {
                         fatalError("Error loading Core Data! \(error)")
                     }
-                    self.getFavorites();
+                    self.getFavorites()
                 }
     }
     

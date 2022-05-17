@@ -8,6 +8,17 @@
 import Foundation
 
 extension Date {
+        
+    func onlyDateFormat() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter.string(from: self)
+    }
+    
+    func add(hours: Int) -> Date {
+        return Calendar.current.date(byAdding: .hour, value: hours, to: self) ?? Date()
+    }
+    
     func timeIn24HourFormat() -> String {
             let formatter = DateFormatter()
             formatter.dateStyle = .none

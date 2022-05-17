@@ -15,8 +15,9 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     @Published var chosenDate: Date
     @Published var isPresented: Bool = false
     @Published var currentTimeHourPosition: Float = Float()
-    @Published var events = [EventViewModel]()
     @Published var currentDate: Date = .init()
+    @Published var drawableEvents = [DrawableEventModel]()
+    private var events = [EventViewModel]()
     private let fetchedResultsController: NSFetchedResultsController<Events>
     private (set) var context: NSManagedObjectContext
     private var timeSubscriber: Cancellable?
@@ -35,6 +36,11 @@ final class ScheduleViewModel: NSObject, ObservableObject {
             sectionNameKeyPath: nil,
             cacheName: nil
         )
+        fetchedResultsController
+            .fetchRequest
+            .predicate = NSPredicate(format:  "%K == %@",
+                                     #keyPath(Events.eventDate),
+                                     chosenDate.onlyDateFormat() as CVarArg)
         super.init()
         fetchedResultsController.delegate = self
       //  self.coordinator = coordinator
@@ -53,6 +59,8 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     func viewDidAppear() {
         makeTimeLinePosition()
         performFetch()
+        makeDrawable(events: events)
+        print(drawableEvents)
     }
     
     func viewDisappear() {
@@ -75,14 +83,6 @@ final class ScheduleViewModel: NSObject, ObservableObject {
         Float(calendar.component(.minute, from: date)) / 60
     }
     
-    func getTime(index: Int) -> String {
-        if index < 10 {
-            return "0\(index):00"
-        } else {
-            return "\(index):00"
-        }
-    }
-    
     func getHour(date: Date) -> Float {
         let calendar = Calendar.current
         return Float(calendar.component(.hour, from: date))
@@ -102,6 +102,20 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     func isSameDate(first: Date, second: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(first, inSameDayAs: second)
+    }
+    func makeDrawable(events: [EventViewModel]){
+        events.forEach { event in
+            self.drawableEvents.append(getDrawableEvent(event: event))
+        }
+    }
+    
+    func getDrawableEvent(event: EventViewModel) -> DrawableEventModel {
+        let name = event.eventName
+        
+        let start = getHour(date: event.startTime) + getMinute(date: event.startTime) / 60
+        let end = getHour(date: event.endTime) + getMinute(date: event.endTime) / 60
+        
+        return DrawableEventModel(name: name, start: start, duration: end-start)
     }
 }
 

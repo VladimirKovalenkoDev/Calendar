@@ -31,6 +31,8 @@
 		BFCE216A2825200200671A51 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE21692825200200671A51 /* BaseModel.swift */; };
 		BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216B2825256400671A51 /* EventViewModel.swift */; };
 		BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216D282D632D00671A51 /* NewEventViewModel.swift */; };
+		BFF6A9C12833A6A9007470C2 /* DrawableEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C02833A6A9007470C2 /* DrawableEventModel.swift */; };
+		BFF6A9C52833DC57007470C2 /* EventLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C42833DC57007470C2 /* EventLayoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		BFCE21692825200200671A51 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		BFCE216B2825256400671A51 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		BFCE216D282D632D00671A51 /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
+		BFF6A9C02833A6A9007470C2 /* DrawableEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableEventModel.swift; sourceTree = "<group>"; };
+		BFF6A9C42833DC57007470C2 /* EventLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 			children = (
 				BFA470D9280D48560093253F /* ScheduleRowView.swift */,
 				BFA470DB280D48680093253F /* CurrentTimeView.swift */,
+				BFF6A9C42833DC57007470C2 /* EventLayoutView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				BFA470B1280D3FE50093253F /* Calendar.xcdatamodeld */,
 				BFA47114281816820093253F /* DateValue.swift */,
 				BFCE21692825200200671A51 /* BaseModel.swift */,
+				BFF6A9C02833A6A9007470C2 /* DrawableEventModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -398,12 +404,14 @@
 				BFA47115281816820093253F /* DateValue.swift in Sources */,
 				BFA470F32812E1D70093253F /* NewEventView.swift in Sources */,
 				BFA470B3280D3FE50093253F /* Calendar.xcdatamodeld in Sources */,
+				BFF6A9C52833DC57007470C2 /* EventLayoutView.swift in Sources */,
 				BFA471132817FB240093253F /* Constants.swift in Sources */,
 				BFA47117281818900093253F /* CalendarViewModel.swift in Sources */,
 				BFA471102817EF1B0093253F /* CalendarView.swift in Sources */,
 				BFCE216A2825200200671A51 /* BaseModel.swift in Sources */,
 				BFA470E3280D4D8B0093253F /* CoreManager.swift in Sources */,
 				BFA470DC280D48680093253F /* CurrentTimeView.swift in Sources */,
+				BFF6A9C12833A6A9007470C2 /* DrawableEventModel.swift in Sources */,
 				BFA470DA280D48560093253F /* ScheduleRowView.swift in Sources */,
 				BFA470EC281186760093253F /* Extension+Date.swift in Sources */,
 				BFCE216828251FC500671A51 /* Extention+Events.swift in Sources */,

@@ -19,7 +19,6 @@ final class CalendarViewModel: NSObject, ObservableObject {
     
     init(context: NSManagedObjectContext) {
         self.currentMonth = 0
-        //self.currentDate = Date()
         self.context = context
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,

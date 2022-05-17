@@ -44,6 +44,7 @@ struct CalendarView: View {
                         isNewEventViewPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
+                            .foregroundColor(Color.red)
                     }
                     .sheet(isPresented: $isNewEventViewPresented) {
                         NewEventView(viewModel: NewEventViewModel(context: viewModel.context))

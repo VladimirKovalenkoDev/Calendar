@@ -27,7 +27,7 @@ struct NewEventView: View {
                         DatePicker(selection: $viewModel.startTime, in: Date()...) {
                             Text("Starts")
                         }
-                        DatePicker(selection: $viewModel.endTime, in: viewModel.startTime...) {
+                        DatePicker(selection: $viewModel.endTime, in: viewModel.startTime.addingTimeInterval(5*60)...) {
                             Text("Ends")
                         }
                     }
@@ -41,6 +41,13 @@ struct NewEventView: View {
                         viewModel.save()
                         dismiss()
                     }
+                    .foregroundColor(Color.red)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                    .foregroundColor(Color.red)
                 }
             }
             
