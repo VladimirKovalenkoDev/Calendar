@@ -10,7 +10,6 @@
 		BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470A6280D3FE30093253F /* CalendarApp.swift */; };
 		BFA470AB280D3FE50093253F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA470AA280D3FE50093253F /* Assets.xcassets */; };
 		BFA470AE280D3FE50093253F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA470AD280D3FE50093253F /* Preview Assets.xcassets */; };
-		BFA470B0280D3FE50093253F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470AF280D3FE50093253F /* Persistence.swift */; };
 		BFA470B3280D3FE50093253F /* Calendar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFA470B1280D3FE50093253F /* Calendar.xcdatamodeld */; };
 		BFA470BD280D3FE50093253F /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470BC280D3FE50093253F /* CalendarTests.swift */; };
 		BFA470C7280D3FE50093253F /* CalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470C6280D3FE50093253F /* CalendarUITests.swift */; };
@@ -61,7 +60,6 @@
 		BFA470A6280D3FE30093253F /* CalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarApp.swift; sourceTree = "<group>"; };
 		BFA470AA280D3FE50093253F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFA470AD280D3FE50093253F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BFA470AF280D3FE50093253F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BFA470B2280D3FE50093253F /* Calendar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Calendar.xcdatamodel; sourceTree = "<group>"; };
 		BFA470B8280D3FE50093253F /* CalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA470BC280D3FE50093253F /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 				BFA470D7280D470A0093253F /* Views */,
 				BFA470ED2811867D0093253F /* Extensions */,
 				BFA470AA280D3FE50093253F /* Assets.xcassets */,
-				BFA470AF280D3FE50093253F /* Persistence.swift */,
 				BFA470AC280D3FE50093253F /* Preview Content */,
 			);
 			path = Calendar;
@@ -427,7 +424,6 @@
 				BFA470D6280D46CA0093253F /* ScheduleView.swift in Sources */,
 				BFA470E5280EEF170093253F /* CalendarCoordinator.swift in Sources */,
 				BFF6A9CA2834F608007470C2 /* EventsMapper.swift in Sources */,
-				BFA470B0280D3FE50093253F /* Persistence.swift in Sources */,
 				BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */,
 				BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */,
 				BFF6A9C82834F4D5007470C2 /* EventsMapperProtocol.swift in Sources */,

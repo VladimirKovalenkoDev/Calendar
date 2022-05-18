@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct ScheduleView: View {
     
@@ -96,15 +95,16 @@ struct ScheduleView: View {
     }
 }
 
+// MARK: - private methods
 extension ScheduleView {
-    func getStartPoint(columnWidth: CGFloat, columnIndex: Int) -> CGFloat {
+    private func getStartPoint(columnWidth: CGFloat, columnIndex: Int) -> CGFloat {
         if columnIndex > 0 {
             return columnWidth * CGFloat(columnIndex) + 68 + CGFloat(2 * columnIndex)
         }
         return 68
     }
     
-    func getTime(index: Int) -> String {
+    private func getTime(index: Int) -> String {
         if index < 10 {
             return "0\(index):00"
         } else {

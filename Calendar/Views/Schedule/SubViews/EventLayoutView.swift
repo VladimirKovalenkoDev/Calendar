@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventLayoutView: View {
+    
     var title: String
     var color: Color
     var width: CGFloat

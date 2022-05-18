@@ -14,6 +14,7 @@ final class CalendarViewModel: NSObject, ObservableObject {
     @Published var currentMonth: Int
     @Published var currentDate: Date = .init()
     @Published var events = [EventViewModel]()
+    
     private let fetchedResultsController: NSFetchedResultsController<Events>
     private (set) var context: NSManagedObjectContext
     

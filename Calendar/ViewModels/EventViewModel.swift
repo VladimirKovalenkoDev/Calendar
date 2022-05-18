@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 struct EventViewModel: Identifiable, Hashable {
+    
     private var event: Events
     
     init(event: Events) {

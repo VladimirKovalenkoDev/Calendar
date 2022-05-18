@@ -50,7 +50,6 @@ struct NewEventView: View {
                     .foregroundColor(Color.red)
                 }
             }
-            
         }
     }
 }

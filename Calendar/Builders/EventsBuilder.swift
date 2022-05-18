@@ -8,6 +8,7 @@
 import Foundation
 
 final class EventsBuilder: EventsBulderProtocol {
+    
     static let shared = EventsBuilder()
     
     func getSortedEvents(events: [DrawableEventModel]) -> [[DrawableEventModel]] {

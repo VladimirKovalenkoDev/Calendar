@@ -10,8 +10,9 @@ import CoreData
 import Combine
 
 final class NewEventViewModel: ObservableObject {
+    
     @Published var eventName: String = String()
-    @Published var eventDate: Date = .init()//???
+    @Published var eventDate: Date = .init()
     @Published var startTime: Date = .init()
     @Published var endTime: Date = .init()
     

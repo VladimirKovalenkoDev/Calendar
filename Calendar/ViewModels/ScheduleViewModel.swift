@@ -51,16 +51,6 @@ final class ScheduleViewModel: NSObject, ObservableObject {
       //  self.coordinator = coordinator
     }
     
-    private func performFetch() {
-        do {
-            try fetchedResultsController.performFetch()
-            guard let events = fetchedResultsController.fetchedObjects else { return }
-            self.events = events.map(EventViewModel.init)
-        } catch {
-            print("Fetch error: \(error)")
-        }
-    }
-    
     func viewDidAppear() {
         makeTimeLinePosition()
         performFetch()
@@ -73,6 +63,28 @@ final class ScheduleViewModel: NSObject, ObservableObject {
         timeSubscriber = nil
     }
     
+    func isSameDate(first: Date, second: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(first, inSameDayAs: second)
+    }
+}
+
+extension ScheduleViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if let events = controller.fetchedObjects as? [Events] {
+            self.events = events.map(EventViewModel.init)
+        }
+    }
+}
+
+// MARK: - private mathods
+extension ScheduleViewModel {
+    private func getCurrentTimePosition(date: Date) -> Float {
+        let calendar = Calendar.current
+        return Float(calendar.component(.hour, from: date)) +
+        Float(calendar.component(.minute, from: date)) / 60
+    }
+    
     private func makeTimeLinePosition() {
         currentTimeHourPosition = getCurrentTimePosition(date: currentDate)
         timeSubscriber?.cancel()
@@ -82,35 +94,20 @@ final class ScheduleViewModel: NSObject, ObservableObject {
         }
     }
     
-    func getCurrentTimePosition(date: Date) -> Float {
-        let calendar = Calendar.current
-        return Float(calendar.component(.hour, from: date)) +
-        Float(calendar.component(.minute, from: date)) / 60
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+            guard let events = fetchedResultsController.fetchedObjects else { return }
+            self.events = events.map(EventViewModel.init)
+        } catch {
+            print("Fetch error: \(error)")
+        }
     }
     
-    func getCurrentTime(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: date)
-    }
-    
-    func isSameDate(first: Date, second: Date) -> Bool {
-        let calendar = Calendar.current
-        return calendar.isDate(first, inSameDayAs: second)
-    }
-    
-    func makeDrawable(events: [EventViewModel]){
+    private func makeDrawable(events: [EventViewModel]){
         events.forEach { event in
             self.drawableEvents.append(mapper.getDrawableEvent(event: event))
         }
         self.drawableArrayEvents = builder.getSortedEvents(events: self.drawableEvents)
-    }
-}
-
-extension ScheduleViewModel: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        if let events = controller.fetchedObjects as? [Events] {
-            self.events = events.map(EventViewModel.init)
-        }
     }
 }
