@@ -27,18 +27,6 @@ struct ScheduleView: View {
     var content: some View {
         NavigationView {
             VStack {
-//                DatePicker(
-//                    "Select Day",
-//                    selection: $viewModel.chosenDate,
-//                    displayedComponents: .date
-//                )
-//                    .datePickerStyle(.compact)
-//                    .padding(.top, 8)
-//                    .padding(.leading, 16)
-//                    .padding(.trailing, 16)
-//                    .onChange(of: viewModel.chosenDate, perform: { _ in
-//                        print("change")
-//                    })
                 Text(viewModel.chosenDate.dateWithDayOfTheWeek())
                 ScrollView {
                     ScrollViewReader { proxy in
@@ -80,22 +68,25 @@ struct ScheduleView: View {
     
     
     var timeLine: some View {
-        ForEach(0..<viewModel.drawableEvents.count) { index in
-            let count = 1
+        ForEach(0..<viewModel.drawableArrayEvents.count) { columnIndex in
+            let drawEvents = viewModel.drawableArrayEvents[columnIndex]
+            let count = viewModel.drawableArrayEvents.count
             let width = UIScreen.main.bounds.size.width
             let columnWidth = (width - 62 + CGFloat(4 - (count * 2))
             ) / CGFloat(count)
-            let drawEvent = viewModel.drawableEvents[index]
-            EventLayoutView(
-                title: drawEvent.name,
-                color: Color.red,
-                width: columnWidth,
-                height: CGFloat(86 * drawEvent.duration)
-            )
-                .frame(width: columnWidth,
-                       height: CGFloat(86 * drawEvent.duration))
-                .padding(.top, CGFloat(86 * drawEvent.start))
-                .padding(.leading, getStartPoint(columnWidth: columnWidth, columnIndex: 0))
+            ForEach(0..<drawEvents.count) { index in
+                let drawEvent = drawEvents[index]
+                EventLayoutView(
+                    title: drawEvent.name,
+                    color: Color.red,
+                    width: columnWidth,
+                    height: CGFloat(86 * drawEvent.duration)
+                )
+                    .frame(width: columnWidth,
+                           height: CGFloat(86 * drawEvent.duration))
+                    .padding(.top, CGFloat(86 * drawEvent.start))
+                    .padding(.leading, getStartPoint(columnWidth: columnWidth, columnIndex: columnIndex))
+            }
         }
     }
     

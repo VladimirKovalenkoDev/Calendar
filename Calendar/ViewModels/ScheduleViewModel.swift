@@ -16,8 +16,11 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     @Published var isPresented: Bool = false
     @Published var currentTimeHourPosition: Float = Float()
     @Published var currentDate: Date = .init()
+    @Published var drawableArrayEvents = [[DrawableEventModel]]()
     @Published var drawableEvents = [DrawableEventModel]()
     private var events = [EventViewModel]()
+    private let builder: EventsBulderProtocol
+    private let mapper: EventsMapperProtocol
     private let fetchedResultsController: NSFetchedResultsController<Events>
     private (set) var context: NSManagedObjectContext
     private var timeSubscriber: Cancellable?
@@ -30,6 +33,8 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     {
         self.chosenDate = chosenDate
         self.context = context
+        self.mapper = EventsMapper.shared
+        self.builder = EventsBuilder.shared
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,
             managedObjectContext: context,
@@ -83,16 +88,6 @@ final class ScheduleViewModel: NSObject, ObservableObject {
         Float(calendar.component(.minute, from: date)) / 60
     }
     
-    func getHour(date: Date) -> Float {
-        let calendar = Calendar.current
-        return Float(calendar.component(.hour, from: date))
-    }
-    
-    func getMinute(date: Date) -> Float {
-        let calendar = Calendar.current
-        return Float(calendar.component(.minute, from: date))
-    }
-    
     func getCurrentTime(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -103,19 +98,12 @@ final class ScheduleViewModel: NSObject, ObservableObject {
         let calendar = Calendar.current
         return calendar.isDate(first, inSameDayAs: second)
     }
+    
     func makeDrawable(events: [EventViewModel]){
         events.forEach { event in
-            self.drawableEvents.append(getDrawableEvent(event: event))
+            self.drawableEvents.append(mapper.getDrawableEvent(event: event))
         }
-    }
-    
-    func getDrawableEvent(event: EventViewModel) -> DrawableEventModel {
-        let name = event.eventName
-        
-        let start = getHour(date: event.startTime) + getMinute(date: event.startTime) / 60
-        let end = getHour(date: event.endTime) + getMinute(date: event.endTime) / 60
-        
-        return DrawableEventModel(name: name, start: start, duration: end-start)
+        self.drawableArrayEvents = builder.getSortedEvents(events: self.drawableEvents)
     }
 }
 

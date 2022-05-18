@@ -133,7 +133,7 @@ struct CalendarView: View {
                     CardView(value: value)
                         .background(
                             RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.gray)
+                                .fill(Color.red)
                                 .padding(.horizontal, 8)
                                 .opacity(
                                     viewModel

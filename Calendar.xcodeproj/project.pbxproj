@@ -33,6 +33,10 @@
 		BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE216D282D632D00671A51 /* NewEventViewModel.swift */; };
 		BFF6A9C12833A6A9007470C2 /* DrawableEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C02833A6A9007470C2 /* DrawableEventModel.swift */; };
 		BFF6A9C52833DC57007470C2 /* EventLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C42833DC57007470C2 /* EventLayoutView.swift */; };
+		BFF6A9C82834F4D5007470C2 /* EventsMapperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C72834F4D5007470C2 /* EventsMapperProtocol.swift */; };
+		BFF6A9CA2834F608007470C2 /* EventsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C92834F608007470C2 /* EventsMapper.swift */; };
+		BFF6A9CD2834F932007470C2 /* EventsBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9CC2834F932007470C2 /* EventsBuilderProtocol.swift */; };
+		BFF6A9CF2834FADC007470C2 /* EventsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9CE2834FADC007470C2 /* EventsBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		BFCE216D282D632D00671A51 /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
 		BFF6A9C02833A6A9007470C2 /* DrawableEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableEventModel.swift; sourceTree = "<group>"; };
 		BFF6A9C42833DC57007470C2 /* EventLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayoutView.swift; sourceTree = "<group>"; };
+		BFF6A9C72834F4D5007470C2 /* EventsMapperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsMapperProtocol.swift; sourceTree = "<group>"; };
+		BFF6A9C92834F608007470C2 /* EventsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsMapper.swift; sourceTree = "<group>"; };
+		BFF6A9CC2834F932007470C2 /* EventsBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBuilderProtocol.swift; sourceTree = "<group>"; };
+		BFF6A9CE2834FADC007470C2 /* EventsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,8 @@
 			children = (
 				BFA470A6280D3FE30093253F /* CalendarApp.swift */,
 				BFA470E6280EEF270093253F /* Coordinators */,
+				BFF6A9CB2834F90B007470C2 /* Builders */,
+				BFF6A9C62834F4B3007470C2 /* Mappers */,
 				BFA470E1280D4D6A0093253F /* Core */,
 				BFA470E0280D4D550093253F /* Models */,
 				BFA470DD280D4CC60093253F /* ViewModels */,
@@ -262,6 +272,24 @@
 				BFA4710F2817EF1B0093253F /* CalendarView.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		BFF6A9C62834F4B3007470C2 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6A9C72834F4D5007470C2 /* EventsMapperProtocol.swift */,
+				BFF6A9C92834F608007470C2 /* EventsMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		BFF6A9CB2834F90B007470C2 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6A9CC2834F932007470C2 /* EventsBuilderProtocol.swift */,
+				BFF6A9CE2834FADC007470C2 /* EventsBuilder.swift */,
+			);
+			path = Builders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,18 +426,22 @@
 				BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */,
 				BFA470D6280D46CA0093253F /* ScheduleView.swift in Sources */,
 				BFA470E5280EEF170093253F /* CalendarCoordinator.swift in Sources */,
+				BFF6A9CA2834F608007470C2 /* EventsMapper.swift in Sources */,
 				BFA470B0280D3FE50093253F /* Persistence.swift in Sources */,
 				BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */,
 				BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */,
+				BFF6A9C82834F4D5007470C2 /* EventsMapperProtocol.swift in Sources */,
 				BFA47115281816820093253F /* DateValue.swift in Sources */,
 				BFA470F32812E1D70093253F /* NewEventView.swift in Sources */,
 				BFA470B3280D3FE50093253F /* Calendar.xcdatamodeld in Sources */,
+				BFF6A9CD2834F932007470C2 /* EventsBuilderProtocol.swift in Sources */,
 				BFF6A9C52833DC57007470C2 /* EventLayoutView.swift in Sources */,
 				BFA471132817FB240093253F /* Constants.swift in Sources */,
 				BFA47117281818900093253F /* CalendarViewModel.swift in Sources */,
 				BFA471102817EF1B0093253F /* CalendarView.swift in Sources */,
 				BFCE216A2825200200671A51 /* BaseModel.swift in Sources */,
 				BFA470E3280D4D8B0093253F /* CoreManager.swift in Sources */,
+				BFF6A9CF2834FADC007470C2 /* EventsBuilder.swift in Sources */,
 				BFA470DC280D48680093253F /* CurrentTimeView.swift in Sources */,
 				BFF6A9C12833A6A9007470C2 /* DrawableEventModel.swift in Sources */,
 				BFA470DA280D48560093253F /* ScheduleRowView.swift in Sources */,
