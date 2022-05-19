@@ -19,7 +19,6 @@
 		BFA470DC280D48680093253F /* CurrentTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470DB280D48680093253F /* CurrentTimeView.swift */; };
 		BFA470DF280D4CF90093253F /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470DE280D4CF90093253F /* ScheduleViewModel.swift */; };
 		BFA470E3280D4D8B0093253F /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470E2280D4D8B0093253F /* CoreManager.swift */; };
-		BFA470E5280EEF170093253F /* CalendarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470E4280EEF170093253F /* CalendarCoordinator.swift */; };
 		BFA470EC281186760093253F /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470EB281186760093253F /* Extension+Date.swift */; };
 		BFA470F32812E1D70093253F /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470F22812E1D70093253F /* NewEventView.swift */; };
 		BFA471102817EF1B0093253F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA4710F2817EF1B0093253F /* CalendarView.swift */; };
@@ -36,6 +35,10 @@
 		BFF6A9CA2834F608007470C2 /* EventsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9C92834F608007470C2 /* EventsMapper.swift */; };
 		BFF6A9CD2834F932007470C2 /* EventsBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9CC2834F932007470C2 /* EventsBuilderProtocol.swift */; };
 		BFF6A9CF2834FADC007470C2 /* EventsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9CE2834FADC007470C2 /* EventsBuilder.swift */; };
+		BFF6A9D1283512E7007470C2 /* View+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9D0283512E7007470C2 /* View+Navigation.swift */; };
+		BFF6A9D528353B8E007470C2 /* CalendarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9D428353B8E007470C2 /* CalendarCoordinator.swift */; };
+		BFF6A9D7283540BC007470C2 /* CalendarCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9D6283540BC007470C2 /* CalendarCoordinatorView.swift */; };
+		BFF6A9DD28365341007470C2 /* SheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9DC28365341007470C2 /* SheetModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +74,6 @@
 		BFA470DB280D48680093253F /* CurrentTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeView.swift; sourceTree = "<group>"; };
 		BFA470DE280D4CF90093253F /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		BFA470E2280D4D8B0093253F /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
-		BFA470E4280EEF170093253F /* CalendarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCoordinator.swift; sourceTree = "<group>"; };
 		BFA470EB281186760093253F /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
 		BFA470F22812E1D70093253F /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		BFA4710F2817EF1B0093253F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,10 @@
 		BFF6A9C92834F608007470C2 /* EventsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsMapper.swift; sourceTree = "<group>"; };
 		BFF6A9CC2834F932007470C2 /* EventsBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBuilderProtocol.swift; sourceTree = "<group>"; };
 		BFF6A9CE2834FADC007470C2 /* EventsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsBuilder.swift; sourceTree = "<group>"; };
+		BFF6A9D0283512E7007470C2 /* View+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Navigation.swift"; sourceTree = "<group>"; };
+		BFF6A9D428353B8E007470C2 /* CalendarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCoordinator.swift; sourceTree = "<group>"; };
+		BFF6A9D6283540BC007470C2 /* CalendarCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCoordinatorView.swift; sourceTree = "<group>"; };
+		BFF6A9DC28365341007470C2 /* SheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +237,7 @@
 		BFA470E6280EEF270093253F /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				BFA470E4280EEF170093253F /* CalendarCoordinator.swift */,
+				BFF6A9D828364B76007470C2 /* CalendarCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -251,6 +257,8 @@
 				BFA470EB281186760093253F /* Extension+Date.swift */,
 				BFA471122817FB240093253F /* Constants.swift */,
 				BFCE216728251FC500671A51 /* Extention+Events.swift */,
+				BFF6A9D0283512E7007470C2 /* View+Navigation.swift */,
+				BFF6A9DC28365341007470C2 /* SheetModifier.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +295,15 @@
 				BFF6A9CE2834FADC007470C2 /* EventsBuilder.swift */,
 			);
 			path = Builders;
+			sourceTree = "<group>";
+		};
+		BFF6A9D828364B76007470C2 /* CalendarCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6A9D6283540BC007470C2 /* CalendarCoordinatorView.swift */,
+				BFF6A9D428353B8E007470C2 /* CalendarCoordinator.swift */,
+			);
+			path = CalendarCoordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,10 +436,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF6A9D528353B8E007470C2 /* CalendarCoordinator.swift in Sources */,
 				BFA470DF280D4CF90093253F /* ScheduleViewModel.swift in Sources */,
 				BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */,
 				BFA470D6280D46CA0093253F /* ScheduleView.swift in Sources */,
-				BFA470E5280EEF170093253F /* CalendarCoordinator.swift in Sources */,
 				BFF6A9CA2834F608007470C2 /* EventsMapper.swift in Sources */,
 				BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */,
 				BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */,
@@ -435,13 +452,16 @@
 				BFA471132817FB240093253F /* Constants.swift in Sources */,
 				BFA47117281818900093253F /* CalendarViewModel.swift in Sources */,
 				BFA471102817EF1B0093253F /* CalendarView.swift in Sources */,
+				BFF6A9D1283512E7007470C2 /* View+Navigation.swift in Sources */,
 				BFCE216A2825200200671A51 /* BaseModel.swift in Sources */,
 				BFA470E3280D4D8B0093253F /* CoreManager.swift in Sources */,
 				BFF6A9CF2834FADC007470C2 /* EventsBuilder.swift in Sources */,
 				BFA470DC280D48680093253F /* CurrentTimeView.swift in Sources */,
 				BFF6A9C12833A6A9007470C2 /* DrawableEventModel.swift in Sources */,
 				BFA470DA280D48560093253F /* ScheduleRowView.swift in Sources */,
+				BFF6A9D7283540BC007470C2 /* CalendarCoordinatorView.swift in Sources */,
 				BFA470EC281186760093253F /* Extension+Date.swift in Sources */,
+				BFF6A9DD28365341007470C2 /* SheetModifier.swift in Sources */,
 				BFCE216828251FC500671A51 /* Extention+Events.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,14 +20,18 @@ struct NewEventView: View {
         NavigationView {
             Form {
                 Section() {
-                    TextField("Title", text: $viewModel.eventName)
+                    TextField("Title",
+                              text: $viewModel.eventName)
                 }
                 Section() {
                     VStack {
-                        DatePicker(selection: $viewModel.startTime, in: Date()...) {
-                            Text("Starts")
-                        }
-                        DatePicker(selection: $viewModel.endTime, in: viewModel.startTime.addingTimeInterval(5*60)...) {
+                        DatePicker(
+                            "Starts",
+                            selection: $viewModel.startTime,
+                            displayedComponents: [.date, .hourAndMinute]
+                        )
+                        DatePicker(selection: $viewModel.endTime,
+                                   in: viewModel.startTime.addingTimeInterval(5*60)...) {
                             Text("Ends")
                         }
                     }

@@ -10,7 +10,6 @@ import SwiftUI
 struct ScheduleView: View {
     
     @ObservedObject private var viewModel: ScheduleViewModel
-    @Environment(\.managedObjectContext) var viewContext
     
     init(viewModel: ScheduleViewModel) {
         self.viewModel = viewModel
@@ -19,12 +18,10 @@ struct ScheduleView: View {
     
     var body: some View {
         content
-            .onAppear(perform: viewModel.viewDidAppear)
             .onDisappear(perform: viewModel.viewDisappear)
     }
     
     var content: some View {
-        NavigationView {
             VStack {
                 Text(viewModel.chosenDate.dateWithDayOfTheWeek())
                 ScrollView {
@@ -48,7 +45,7 @@ struct ScheduleView: View {
                                 .id(2)
                     }
                         .onAppear {
-                            proxy.scrollTo(1, anchor: .bottom)
+                            proxy.scrollTo(2, anchor: .bottom)
                         }
                     }
                         VStack {
@@ -63,7 +60,6 @@ struct ScheduleView: View {
             }
             .navigationBarTitle("Schedule", displayMode: .inline)
         }
-    }
     
     
     var timeLine: some View {

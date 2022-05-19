@@ -8,8 +8,8 @@
 import Foundation
 import CoreData
 
-@MainActor
-final class CalendarViewModel: NSObject, ObservableObject {
+//@MainActor
+final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
     
     @Published var currentMonth: Int
     @Published var currentDate: Date = .init()
@@ -17,10 +17,12 @@ final class CalendarViewModel: NSObject, ObservableObject {
     
     private let fetchedResultsController: NSFetchedResultsController<Events>
     private (set) var context: NSManagedObjectContext
+    private unowned let coordinator: CalendarCoordinator
     
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, coordinator: CalendarCoordinator) {
         self.currentMonth = 0
         self.context = context
+        self.coordinator = coordinator
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,
             managedObjectContext: context,
@@ -107,6 +109,14 @@ final class CalendarViewModel: NSObject, ObservableObject {
     func isSameDate(first: Date, second: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(first, inSameDayAs: second)
+    }
+    
+    func openSchedule(_ date: Date) {
+        self.coordinator.open(date)
+    }
+    
+    func openNewEvent(_ date: Date) {
+        self.coordinator.openNewEvent(date)
     }
 }
 

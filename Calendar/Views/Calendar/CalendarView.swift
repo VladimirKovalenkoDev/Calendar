@@ -10,46 +10,22 @@ import SwiftUI
 struct CalendarView: View {
     
     @ObservedObject private var viewModel: CalendarViewModel
-    @State var isNewEventViewPresented: Bool
-    @State var isScheduleViewActive: Bool
     
     init(viewModel: CalendarViewModel) {
         self.viewModel = viewModel
-        self.isNewEventViewPresented = false
-        self.isScheduleViewActive = false
     }
     
     var body: some View {
-        NavigationView {
-            List(viewModel.currentMonth..<12) { month in
-                ZStack {
-                    CalendarList(month: month)
-                    NavigationLink("",
-                                   destination: ScheduleView(
-                                    viewModel: ScheduleViewModel(
-                                        context: viewModel.context,
-                                        chosenDate: viewModel.currentDate
-                                    )
-                                   ),
-                                   isActive: $isScheduleViewActive)
-                        .hidden()
-                }
-            }
-            .listStyle(.plain)
-            .navigationTitle("Month")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isNewEventViewPresented.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(Color.red)
-                    }
-                    .sheet(isPresented: $isNewEventViewPresented) {
-                        NewEventView(viewModel: NewEventViewModel(context: viewModel.context))
-                    }
-                    
+        List(viewModel.currentMonth..<12) { month in
+            CalendarList(month: month)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.openNewEvent(viewModel.currentDate)
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(Color.red)
                 }
             }
         }
@@ -104,6 +80,7 @@ struct CalendarView: View {
     @ViewBuilder
     func CalendarList(month: Int) -> some View {
         VStack(spacing: 35) {
+            
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(viewModel.getMonthAndYear(currentMonth: month)[1])
@@ -116,6 +93,7 @@ struct CalendarView: View {
                 .padding(.horizontal)
                 Spacer()
             }
+            
             HStack(spacing: 0) {
                 ForEach(C.days, id: \.self){ day in
                     Text(day)
@@ -124,10 +102,12 @@ struct CalendarView: View {
                         .frame(maxWidth: .infinity)
                 }
             }
+            
             let columns = Array(
                 repeating: GridItem(.flexible(), spacing: 15, alignment: .center),
                 count: 7
             )
+            
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(viewModel.extractDate(currentMonth: month)) { value in
                     CardView(value: value)
@@ -143,7 +123,7 @@ struct CalendarView: View {
                         )
                         .onTapGesture {
                             viewModel.currentDate = value.date
-                            isScheduleViewActive.toggle()
+                            viewModel.openSchedule(value.date)
                         }
                 }
             }

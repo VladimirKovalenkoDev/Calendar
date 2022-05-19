@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct CalendarApp: App {
-//    @StateObject var coordinator = CalendarCoordinator()
+    
+    @StateObject var coordinator = CalendarCoordinator(context: CoreManager.shared.container.viewContext)
+    
     var body: some Scene {
         WindowGroup {
-            let viewContext = CoreManager.shared.container.viewContext
-            CalendarView(viewModel: CalendarViewModel(context: viewContext))
+            CalendarCoordinatorView(coordinator: coordinator)
         }
     }
 }

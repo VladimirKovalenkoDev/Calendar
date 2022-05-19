@@ -10,7 +10,7 @@ import Combine
 import CoreData
 import SwiftUI
 
-final class ScheduleViewModel: NSObject, ObservableObject {
+final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     
     @Published var chosenDate: Date
     @Published var isPresented: Bool = false
@@ -18,6 +18,7 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     @Published var currentDate: Date = .init()
     @Published var drawableArrayEvents = [[DrawableEventModel]]()
     @Published var drawableEvents = [DrawableEventModel]()
+    
     private var events = [EventViewModel]()
     private let builder: EventsBulderProtocol
     private let mapper: EventsMapperProtocol
@@ -25,16 +26,19 @@ final class ScheduleViewModel: NSObject, ObservableObject {
     private (set) var context: NSManagedObjectContext
     private var timeSubscriber: Cancellable?
     private var timer: Timer.TimerPublisher = Timer.publish(every: 0, on: .main, in: .common)
-   // private unowned let coordinator: CalendarCoordinator
+    private unowned let coordinator: CalendarCoordinator
     
-    init(context: NSManagedObjectContext, chosenDate: Date)
-//         ,
-//         coordinator: CalendarCoordinator)
-    {
+    init(context: NSManagedObjectContext,
+         chosenDate: Date,
+         coordinator: CalendarCoordinator,
+         builder: EventsBulderProtocol,
+         mapper: EventsMapperProtocol
+    ) {
         self.chosenDate = chosenDate
         self.context = context
-        self.mapper = EventsMapper.shared
-        self.builder = EventsBuilder.shared
+        self.mapper = mapper
+        self.builder = builder
+        self.coordinator = coordinator
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,
             managedObjectContext: context,
@@ -48,14 +52,9 @@ final class ScheduleViewModel: NSObject, ObservableObject {
                                      chosenDate.onlyDateFormat() as CVarArg)
         super.init()
         fetchedResultsController.delegate = self
-      //  self.coordinator = coordinator
-    }
-    
-    func viewDidAppear() {
         makeTimeLinePosition()
         performFetch()
         makeDrawable(events: events)
-        print(drawableEvents)
     }
     
     func viewDisappear() {

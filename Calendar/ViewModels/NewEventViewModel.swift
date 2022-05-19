@@ -9,20 +9,41 @@ import Foundation
 import CoreData
 import Combine
 
-final class NewEventViewModel: ObservableObject {
+final class NewEventViewModel: ObservableObject, Identifiable {
     
     @Published var eventName: String = String()
     @Published var eventDate: Date = .init()
     @Published var startTime: Date = .init()
     @Published var endTime: Date = .init()
     
+    private var currentTime: Date = .init()
     private var cancellable: Cancellable?
     private (set) var context: NSManagedObjectContext
-    private var currentDate: Date = .init()
+    private unowned let coordinator: CalendarCoordinator
     
-    init(context: NSManagedObjectContext) {
+    init(
+        context: NSManagedObjectContext,
+        coordinator: CalendarCoordinator,
+        chosenDate: Date
+    ) {
         self.context = context
+        self.coordinator = coordinator
+        self.startTime = chosenDate
         changeEndTimeValue()
+        makeStartTime()
+    }
+    
+    private func makeStartTime() {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: currentTime)
+        let minute = calendar.component(.minute, from: currentTime)
+        let second = calendar.component(.second, from: currentTime)
+        startTime = calendar.date(
+            bySettingHour: hour,
+            minute: minute,
+            second: second,
+            of: startTime
+        ) ?? Date()
     }
     
     private func changeEndTimeValue() {
