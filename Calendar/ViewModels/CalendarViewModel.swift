@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 
-//@MainActor
 final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
     
     @Published var currentMonth: Int
@@ -32,16 +31,6 @@ final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
         super.init()
         fetchedResultsController.delegate = self
         performFetch()
-    }
-    
-    private func performFetch() {
-        do {
-            try fetchedResultsController.performFetch()
-            guard let events = fetchedResultsController.fetchedObjects else { return }
-            self.events = events.map(EventViewModel.init)
-        } catch {
-            print("Fetch error: \(error)")
-        }
     }
     
     func extractDate(currentMonth: Int) -> [DateValue] {
@@ -96,16 +85,6 @@ final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
         return date.components(separatedBy: " ")
     }
     
-    func getCurrentMonth(currentMonth: Int) -> Date {
-        let calendar = Calendar.current
-        guard let currentMonth = calendar.date(
-            byAdding: .month,
-            value: currentMonth,
-            to: Date()
-        ) else { return Date() }
-        return currentMonth
-    }
-    
     func isSameDate(first: Date, second: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(first, inSameDayAs: second)
@@ -124,6 +103,29 @@ extension CalendarViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if let events = controller.fetchedObjects as? [Events] {
             self.events = events.map(EventViewModel.init)
+        }
+    }
+}
+
+// MARK: - private methods
+extension CalendarViewModel {
+    private func getCurrentMonth(currentMonth: Int) -> Date {
+        let calendar = Calendar.current
+        guard let currentMonth = calendar.date(
+            byAdding: .month,
+            value: currentMonth,
+            to: Date()
+        ) else { return Date() }
+        return currentMonth
+    }
+    
+    private func performFetch() {
+        do {
+            try fetchedResultsController.performFetch()
+            guard let events = fetchedResultsController.fetchedObjects else { return }
+            self.events = events.map(EventViewModel.init)
+        } catch {
+            print("Fetch error: \(error)")
         }
     }
 }

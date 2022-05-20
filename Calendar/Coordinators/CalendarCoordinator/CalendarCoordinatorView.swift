@@ -14,9 +14,9 @@ struct CalendarCoordinatorView: View {
     var body: some View {
         NavigationView {
             CalendarView(viewModel: coordinator.viewModel)
-                .navigation(item: $coordinator.scheduleViewModel) { viewModel in
-                    NavigationView {
-                        ScheduleView(viewModel: viewModel)
+                .navigation(item: $coordinator.scheduleCoordinator) { viewModel in
+                    if let scheduleCoordinator = coordinator.scheduleCoordinator {
+                        SchedulerCoordinatorView(coordinator: scheduleCoordinator)
                     }
                 }
                 .listStyle(.plain)
@@ -26,5 +26,6 @@ struct CalendarCoordinatorView: View {
                     NewEventView(viewModel: $0)
                 }
         }
+        .accentColor(.red)
     }
 }

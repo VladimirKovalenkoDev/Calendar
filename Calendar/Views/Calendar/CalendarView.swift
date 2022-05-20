@@ -16,7 +16,7 @@ struct CalendarView: View {
     }
     
     var body: some View {
-        List(viewModel.currentMonth..<12) { month in
+        List(viewModel.currentMonth..<12, id: \.self) { month in
             CalendarList(month: month)
         }
         .toolbar {

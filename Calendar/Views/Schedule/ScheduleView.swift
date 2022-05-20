@@ -18,7 +18,18 @@ struct ScheduleView: View {
     
     var body: some View {
         content
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        viewModel.openNewEvent(viewModel.chosenDate)
+                    } label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(Color.red)
+                    }
+                }
+            }
             .onDisappear(perform: viewModel.viewDisappear)
+        
     }
     
     var content: some View {
@@ -63,13 +74,13 @@ struct ScheduleView: View {
     
     
     var timeLine: some View {
-        ForEach(0..<viewModel.drawableArrayEvents.count) { columnIndex in
+        ForEach(0..<viewModel.drawableArrayEvents.count, id: \.self) { columnIndex in
             let drawEvents = viewModel.drawableArrayEvents[columnIndex]
             let count = viewModel.drawableArrayEvents.count
             let width = UIScreen.main.bounds.size.width
             let columnWidth = (width - 62 + CGFloat(4 - (count * 2))
             ) / CGFloat(count)
-            ForEach(0..<drawEvents.count) { index in
+            ForEach(0..<drawEvents.count, id: \.self) { index in
                 let drawEvent = drawEvents[index]
                 EventLayoutView(
                     title: drawEvent.name,
@@ -93,7 +104,8 @@ struct ScheduleView: View {
 
 // MARK: - private methods
 extension ScheduleView {
-    private func getStartPoint(columnWidth: CGFloat, columnIndex: Int) -> CGFloat {
+    private func getStartPoint(columnWidth: CGFloat,
+                               columnIndex: Int) -> CGFloat {
         if columnIndex > 0 {
             return columnWidth * CGFloat(columnIndex) + 68 + CGFloat(2 * columnIndex)
         }

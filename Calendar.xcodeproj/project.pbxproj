@@ -39,6 +39,8 @@
 		BFF6A9D528353B8E007470C2 /* CalendarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9D428353B8E007470C2 /* CalendarCoordinator.swift */; };
 		BFF6A9D7283540BC007470C2 /* CalendarCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9D6283540BC007470C2 /* CalendarCoordinatorView.swift */; };
 		BFF6A9DD28365341007470C2 /* SheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9DC28365341007470C2 /* SheetModifier.swift */; };
+		BFF6A9E02836A744007470C2 /* SchedulerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9DF2836A744007470C2 /* SchedulerCoordinator.swift */; };
+		BFF6A9E32836AC6E007470C2 /* SchedulerCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9E22836AC6E007470C2 /* SchedulerCoordinatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		BFF6A9D428353B8E007470C2 /* CalendarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCoordinator.swift; sourceTree = "<group>"; };
 		BFF6A9D6283540BC007470C2 /* CalendarCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCoordinatorView.swift; sourceTree = "<group>"; };
 		BFF6A9DC28365341007470C2 /* SheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetModifier.swift; sourceTree = "<group>"; };
+		BFF6A9DF2836A744007470C2 /* SchedulerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerCoordinator.swift; sourceTree = "<group>"; };
+		BFF6A9E22836AC6E007470C2 /* SchedulerCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerCoordinatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				BFF6A9D828364B76007470C2 /* CalendarCoordinator */,
+				BFF6A9E12836A7BF007470C2 /* SchedulerCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -304,6 +309,15 @@
 				BFF6A9D428353B8E007470C2 /* CalendarCoordinator.swift */,
 			);
 			path = CalendarCoordinator;
+			sourceTree = "<group>";
+		};
+		BFF6A9E12836A7BF007470C2 /* SchedulerCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6A9DF2836A744007470C2 /* SchedulerCoordinator.swift */,
+				BFF6A9E22836AC6E007470C2 /* SchedulerCoordinatorView.swift */,
+			);
+			path = SchedulerCoordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,6 +454,7 @@
 				BFA470DF280D4CF90093253F /* ScheduleViewModel.swift in Sources */,
 				BFCE216C2825256400671A51 /* EventViewModel.swift in Sources */,
 				BFA470D6280D46CA0093253F /* ScheduleView.swift in Sources */,
+				BFF6A9E02836A744007470C2 /* SchedulerCoordinator.swift in Sources */,
 				BFF6A9CA2834F608007470C2 /* EventsMapper.swift in Sources */,
 				BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */,
 				BFCE216E282D632D00671A51 /* NewEventViewModel.swift in Sources */,
@@ -461,6 +476,7 @@
 				BFA470DA280D48560093253F /* ScheduleRowView.swift in Sources */,
 				BFF6A9D7283540BC007470C2 /* CalendarCoordinatorView.swift in Sources */,
 				BFA470EC281186760093253F /* Extension+Date.swift in Sources */,
+				BFF6A9E32836AC6E007470C2 /* SchedulerCoordinatorView.swift in Sources */,
 				BFF6A9DD28365341007470C2 /* SheetModifier.swift in Sources */,
 				BFCE216828251FC500671A51 /* Extention+Events.swift in Sources */,
 			);

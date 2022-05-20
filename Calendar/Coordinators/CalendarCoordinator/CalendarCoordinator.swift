@@ -12,7 +12,7 @@ class CalendarCoordinator: ObservableObject, Identifiable {
     
     @Published var viewModel: CalendarViewModel!
     @Published var newEventViewModel: NewEventViewModel?
-    @Published var scheduleViewModel: ScheduleViewModel?
+    @Published var scheduleCoordinator: SchedulerCoordinator?
     
     private (set) var context: NSManagedObjectContext
     
@@ -28,10 +28,10 @@ class CalendarCoordinator: ObservableObject, Identifiable {
     func open(_ date: Date) {
         let mapper = EventsMapper.shared
         let builder = EventsBuilder.shared
-        self.scheduleViewModel = .init(
+        self.scheduleCoordinator = .init(
             context: context,
-            chosenDate: date,
-            coordinator: self,
+            date: date,
+            parent: self,
             builder: builder,
             mapper: mapper
         )

@@ -26,11 +26,11 @@ final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     private (set) var context: NSManagedObjectContext
     private var timeSubscriber: Cancellable?
     private var timer: Timer.TimerPublisher = Timer.publish(every: 0, on: .main, in: .common)
-    private unowned let coordinator: CalendarCoordinator
+    private unowned let coordinator: SchedulerCoordinator
     
     init(context: NSManagedObjectContext,
          chosenDate: Date,
-         coordinator: CalendarCoordinator,
+         coordinator: SchedulerCoordinator,
          builder: EventsBulderProtocol,
          mapper: EventsMapperProtocol
     ) {
@@ -65,6 +65,16 @@ final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     func isSameDate(first: Date, second: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(first, inSameDayAs: second)
+    }
+    
+    func dismiss() {
+        drawableEvents.removeAll()
+        drawableArrayEvents.removeAll()
+        makeDrawable(events: events)
+    }
+    
+    func openNewEvent(_ date: Date) {
+        self.coordinator.openNewEvent(date)
     }
 }
 
