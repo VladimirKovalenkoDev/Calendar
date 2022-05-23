@@ -14,6 +14,14 @@ struct SchedulerCoordinatorView: View {
     var body: some View {
         if let viewModel = coordinator.viewModel {
             ScheduleView(viewModel: viewModel)
+                .navigation(item: $coordinator.detailEventCoordinator, destination: { _ in
+                    if let coordinator = coordinator.detailEventCoordinator {
+                        DetailEventCoordinatorView(coordinator: coordinator)
+                    }
+                })
+                .onAppear(perform: {
+                    viewModel.dismiss()
+                })
                 .sheet(item: $coordinator.newEventViewModel) {
                     viewModel.dismiss()
                 } content: {

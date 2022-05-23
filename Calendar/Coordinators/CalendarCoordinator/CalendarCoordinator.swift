@@ -40,7 +40,6 @@ class CalendarCoordinator: ObservableObject, Identifiable {
     func openNewEvent(_ date: Date) {
         self.newEventViewModel = .init(
             context: context,
-            coordinator: self,
             chosenDate: date
         )
     }

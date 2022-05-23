@@ -16,7 +16,7 @@ final class EventsMapper: EventsMapperProtocol {
         let start = getHour(date: event.startTime) + getMinute(date: event.startTime) / 60
         let end = getHour(date: event.endTime) + getMinute(date: event.endTime) / 60
         
-        return DrawableEventModel(name: name, start: start, duration: end-start)
+        return DrawableEventModel(name: name, start: start, duration: end-start, master: event)
     }
     
     func getHour(date: Date) -> Float {

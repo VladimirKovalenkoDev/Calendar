@@ -19,15 +19,12 @@ final class NewEventViewModel: ObservableObject, Identifiable {
     private var currentTime: Date = .init()
     private var cancellable: Cancellable?
     private (set) var context: NSManagedObjectContext
-    private unowned let coordinator: CalendarCoordinator
     
     init(
         context: NSManagedObjectContext,
-        coordinator: CalendarCoordinator,
         chosenDate: Date
     ) {
         self.context = context
-        self.coordinator = coordinator
         self.startTime = chosenDate
         changeEndTimeValue()
         makeStartTime()

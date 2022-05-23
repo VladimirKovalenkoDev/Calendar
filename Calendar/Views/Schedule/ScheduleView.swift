@@ -13,7 +13,6 @@ struct ScheduleView: View {
     
     init(viewModel: ScheduleViewModel) {
         self.viewModel = viewModel
-        
     }
     
     var body: some View {
@@ -92,6 +91,9 @@ struct ScheduleView: View {
                            height: CGFloat(86 * drawEvent.duration))
                     .padding(.top, CGFloat(86 * drawEvent.start))
                     .padding(.leading, getStartPoint(columnWidth: columnWidth, columnIndex: columnIndex))
+                    .onTapGesture {
+                        viewModel.openDetailEvent(drawEvent.master)
+                    }
             }
         }
     }

@@ -11,4 +11,5 @@ struct DrawableEventModel {
     let name: String
     let start: Float
     let duration: Float
+    let master: EventViewModel
 }

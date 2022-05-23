@@ -12,6 +12,7 @@ class SchedulerCoordinator: ObservableObject, Identifiable {
     
     @Published var viewModel: ScheduleViewModel?
     @Published var newEventViewModel: NewEventViewModel?
+    @Published var detailEventCoordinator: DetailEventCoordinator?
     
     private var parent: CalendarCoordinator
     private (set) var context: NSManagedObjectContext
@@ -37,8 +38,14 @@ class SchedulerCoordinator: ObservableObject, Identifiable {
     func openNewEvent(_ date: Date) {
         self.newEventViewModel = .init(
             context: context,
-            coordinator: parent,
             chosenDate: date
+        )
+    }
+    
+    func openDetailEvent(_ selectedEvent: EventViewModel) {
+        self.detailEventCoordinator = .init(
+            context: context,
+            selectedEvent: selectedEvent
         )
     }
 }

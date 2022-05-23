@@ -10,7 +10,7 @@ import CoreData
 
 struct EventViewModel: Identifiable, Hashable {
     
-    private var event: Events
+    var event: Events
     
     init(event: Events) {
         self.event = event

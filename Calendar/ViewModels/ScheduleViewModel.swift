@@ -76,6 +76,10 @@ final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     func openNewEvent(_ date: Date) {
         self.coordinator.openNewEvent(date)
     }
+    
+    func openDetailEvent(_ selectedEvent: EventViewModel) {
+        self.coordinator.openDetailEvent(selectedEvent)
+    }
 }
 
 extension ScheduleViewModel: NSFetchedResultsControllerDelegate {
