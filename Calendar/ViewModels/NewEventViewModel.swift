@@ -22,10 +22,12 @@ final class NewEventViewModel: ObservableObject, Identifiable {
     
     init(
         context: NSManagedObjectContext,
-        chosenDate: Date
+        chosenDate: Date,
+        eventName: String
     ) {
         self.context = context
         self.startTime = chosenDate
+        self.eventName = eventName
         changeEndTimeValue()
         makeStartTime()
     }
@@ -52,6 +54,9 @@ final class NewEventViewModel: ObservableObject, Identifiable {
     func save() {
         do {
             let event = Events(context: context)
+            if eventName == "" {
+                self.eventName = "New Event"
+            }
             event.eventName = eventName
             event.startTime = startTime
             event.endTime = endTime

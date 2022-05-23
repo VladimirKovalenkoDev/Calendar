@@ -41,4 +41,8 @@ final class DetailEventViewModel: ObservableObject, Identifiable {
             print("Error in deleting \(error)")
         }
     }
+    
+    func openCurrentEvent() {
+        coordinator.openEvent(selectedEvent.startTime, selectedEvent.eventName)
+    }
 }

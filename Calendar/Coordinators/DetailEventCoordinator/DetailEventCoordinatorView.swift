@@ -13,6 +13,13 @@ struct DetailEventCoordinatorView: View {
     
     var body: some View {
         DetailEventView(viewModel: coordinator.viewModel!)
+//            .sheet(item: $coordinator.newEventViewModel) {
+//                //viewModel.dismiss()
+//            } content: {
+//                NewEventView(viewModel: $0)
+//            }
     }
+    
+    
 }
 

@@ -38,7 +38,8 @@ class SchedulerCoordinator: ObservableObject, Identifiable {
     func openNewEvent(_ date: Date) {
         self.newEventViewModel = .init(
             context: context,
-            chosenDate: date
+            chosenDate: date,
+            eventName: ""
         )
     }
     

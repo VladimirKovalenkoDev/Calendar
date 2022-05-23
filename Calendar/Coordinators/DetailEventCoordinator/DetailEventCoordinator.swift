@@ -26,4 +26,12 @@ class DetailEventCoordinator: ObservableObject, Identifiable {
             coordinator: self
         )
     }
+    
+    func openEvent(_ chosenDate: Date, _ eventName: String) {
+        self.newEventViewModel = .init(
+            context: context,
+            chosenDate: chosenDate,
+            eventName: eventName
+        )
+    }
 }
