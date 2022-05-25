@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DrawableEventModel {
+struct DrawableEventModel: Equatable {
     let name: String
     let start: Float
     let duration: Float

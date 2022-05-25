@@ -45,6 +45,10 @@
 		BFF6A9E8283B833D007470C2 /* DetailEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9E7283B833D007470C2 /* DetailEventViewModel.swift */; };
 		BFF6A9EA283B8994007470C2 /* DetailEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9E9283B8994007470C2 /* DetailEventCoordinator.swift */; };
 		BFF6A9ED283B89B8007470C2 /* DetailEventCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6A9EC283B89B8007470C2 /* DetailEventCoordinatorView.swift */; };
+		BFF6AA09283E2FCB007470C2 /* EventBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AA08283E2FCB007470C2 /* EventBuilderTests.swift */; };
+		BFF6AA0C283E30F7007470C2 /* DrawableEventsModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AA0B283E30F7007470C2 /* DrawableEventsModelMock.swift */; };
+		BFF6AA0F283E43C8007470C2 /* EventsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AA0E283E43C8007470C2 /* EventsMapperTests.swift */; };
+		BFF6AA12283E473F007470C2 /* EventsViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6AA11283E473F007470C2 /* EventsViewModelMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,10 @@
 		BFF6A9E7283B833D007470C2 /* DetailEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventViewModel.swift; sourceTree = "<group>"; };
 		BFF6A9E9283B8994007470C2 /* DetailEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventCoordinator.swift; sourceTree = "<group>"; };
 		BFF6A9EC283B89B8007470C2 /* DetailEventCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventCoordinatorView.swift; sourceTree = "<group>"; };
+		BFF6AA08283E2FCB007470C2 /* EventBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBuilderTests.swift; sourceTree = "<group>"; };
+		BFF6AA0B283E30F7007470C2 /* DrawableEventsModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawableEventsModelMock.swift; sourceTree = "<group>"; };
+		BFF6AA0E283E43C8007470C2 /* EventsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsMapperTests.swift; sourceTree = "<group>"; };
+		BFF6AA11283E473F007470C2 /* EventsViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModelMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				BFA470BC280D3FE50093253F /* CalendarTests.swift */,
+				BFF6AA10283E46BC007470C2 /* Mappers */,
+				BFF6AA0A283E2FD3007470C2 /* Builders */,
+				BFF6AA0D283E30FF007470C2 /* Mocks */,
 			);
 			path = CalendarTests;
 			sourceTree = "<group>";
@@ -346,6 +357,31 @@
 				BFF6A9EC283B89B8007470C2 /* DetailEventCoordinatorView.swift */,
 			);
 			path = DetailEventCoordinator;
+			sourceTree = "<group>";
+		};
+		BFF6AA0A283E2FD3007470C2 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6AA08283E2FCB007470C2 /* EventBuilderTests.swift */,
+			);
+			path = Builders;
+			sourceTree = "<group>";
+		};
+		BFF6AA0D283E30FF007470C2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6AA0B283E30F7007470C2 /* DrawableEventsModelMock.swift */,
+				BFF6AA11283E473F007470C2 /* EventsViewModelMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		BFF6AA10283E46BC007470C2 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6AA0E283E43C8007470C2 /* EventsMapperTests.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,7 +554,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF6AA12283E473F007470C2 /* EventsViewModelMock.swift in Sources */,
+				BFF6AA09283E2FCB007470C2 /* EventBuilderTests.swift in Sources */,
 				BFA470BD280D3FE50093253F /* CalendarTests.swift in Sources */,
+				BFF6AA0C283E30F7007470C2 /* DrawableEventsModelMock.swift in Sources */,
+				BFF6AA0F283E43C8007470C2 /* EventsMapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +717,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -707,7 +747,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
