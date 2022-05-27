@@ -30,6 +30,7 @@ final class EditEventViewModel: ObservableObject, Identifiable {
     
     func edit() {
         do {
+            selectedEvent.event.eventDate = startTime.onlyDateFormat()
             selectedEvent.event.endTime = endTime
             selectedEvent.event.startTime = startTime
             selectedEvent.event.eventName = eventName
