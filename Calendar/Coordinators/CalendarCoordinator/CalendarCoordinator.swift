@@ -20,7 +20,6 @@ class CalendarCoordinator: ObservableObject, Identifiable {
         self.context = context
         
         self.viewModel = .init(
-            context: context,
             coordinator: self
         )
     }
@@ -44,5 +43,4 @@ class CalendarCoordinator: ObservableObject, Identifiable {
             eventName: ""
         )
     }
-    
 }

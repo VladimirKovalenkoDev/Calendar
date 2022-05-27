@@ -27,7 +27,6 @@ class SchedulerCoordinator: ObservableObject, Identifiable {
         self.parent = parent
         self.context = context
         self.viewModel = .init(
-            context: context,
             chosenDate: date,
             coordinator: self,
             builder: builder,

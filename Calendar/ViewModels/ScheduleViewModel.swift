@@ -23,25 +23,23 @@ final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     private let builder: EventsBulderProtocol
     private let mapper: EventsMapperProtocol
     private let fetchedResultsController: NSFetchedResultsController<Events>
-    private (set) var context: NSManagedObjectContext
     private var timeSubscriber: Cancellable?
     private var timer: Timer.TimerPublisher = Timer.publish(every: 0, on: .main, in: .common)
     private unowned let coordinator: SchedulerCoordinator
     
-    init(context: NSManagedObjectContext,
+    init(
          chosenDate: Date,
          coordinator: SchedulerCoordinator,
          builder: EventsBulderProtocol,
          mapper: EventsMapperProtocol
     ) {
         self.chosenDate = chosenDate
-        self.context = context
         self.mapper = mapper
         self.builder = builder
         self.coordinator = coordinator
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,
-            managedObjectContext: context,
+            managedObjectContext: coordinator.context,
             sectionNameKeyPath: nil,
             cacheName: nil
         )

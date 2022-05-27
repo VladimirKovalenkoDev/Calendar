@@ -15,16 +15,16 @@ final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
     @Published var events = [EventViewModel]()
     
     private let fetchedResultsController: NSFetchedResultsController<Events>
-    private (set) var context: NSManagedObjectContext
     private unowned let coordinator: CalendarCoordinator
     
-    init(context: NSManagedObjectContext, coordinator: CalendarCoordinator) {
+    init(
+        coordinator: CalendarCoordinator
+    ) {
         self.currentMonth = 0
-        self.context = context
         self.coordinator = coordinator
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,
-            managedObjectContext: context,
+            managedObjectContext: coordinator.context,
             sectionNameKeyPath: nil,
             cacheName: nil
         )

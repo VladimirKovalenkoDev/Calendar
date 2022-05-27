@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF9C6179283F7A1A00709088 /* CalendarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */; };
 		BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470A6280D3FE30093253F /* CalendarApp.swift */; };
 		BFA470AB280D3FE50093253F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA470AA280D3FE50093253F /* Assets.xcassets */; };
 		BFA470AE280D3FE50093253F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA470AD280D3FE50093253F /* Preview Assets.xcassets */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModelTests.swift; sourceTree = "<group>"; };
 		BFA470A3280D3FE30093253F /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA470A6280D3FE30093253F /* CalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarApp.swift; sourceTree = "<group>"; };
 		BFA470AA280D3FE50093253F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +143,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF8D0D582840E74200DA1A02 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BF9C6175283E7A2F00709088 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		BFA4709A280D3FE30093253F = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +207,8 @@
 		BFA470BB280D3FE50093253F /* CalendarTests */ = {
 			isa = PBXGroup;
 			children = (
+				BF8D0D582840E74200DA1A02 /* ViewModels */,
+				BF9C6175283E7A2F00709088 /* Coordinators */,
 				BFA470BC280D3FE50093253F /* CalendarTests.swift */,
 				BFF6AA10283E46BC007470C2 /* Mappers */,
 				BFF6AA0A283E2FD3007470C2 /* Builders */,
@@ -555,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFF6AA12283E473F007470C2 /* EventsViewModelMock.swift in Sources */,
+				BF9C6179283F7A1A00709088 /* CalendarViewModelTests.swift in Sources */,
 				BFF6AA09283E2FCB007470C2 /* EventBuilderTests.swift in Sources */,
 				BFA470BD280D3FE50093253F /* CalendarTests.swift in Sources */,
 				BFF6AA0C283E30F7007470C2 /* DrawableEventsModelMock.swift in Sources */,
