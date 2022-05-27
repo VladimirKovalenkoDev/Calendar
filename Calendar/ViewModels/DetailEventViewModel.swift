@@ -11,10 +11,10 @@ import SwiftUI
 
 final class DetailEventViewModel: ObservableObject, Identifiable {
     
-    @Published var eventName: String
-    @Published var eventDate: String
-    @Published var startDate: String
-    @Published var endDate: String
+    @Published var eventName: String = .init()
+    @Published var eventDate: String = .init()
+    @Published var startDate: String = .init()
+    @Published var endDate: String = .init()
     
     private (set) var context: NSManagedObjectContext
     private var selectedEvent: EventViewModel
@@ -28,10 +28,11 @@ final class DetailEventViewModel: ObservableObject, Identifiable {
         self.context = context
         self.selectedEvent = selectedEvent
         self.coordinator = coordinator
-        self.eventName = selectedEvent.eventName
-        self.eventDate = selectedEvent.startTime.dateWithDayOfTheWeek()
-        self.startDate = selectedEvent.startTime.timeIn24HourFormat()
-        self.endDate = selectedEvent.endTime.timeIn24HourFormat()
+        updateView()
+//        self.eventName = selectedEvent.eventName
+//        self.eventDate = selectedEvent.startTime.dateWithDayOfTheWeek()
+//        self.startDate = selectedEvent.startTime.timeIn24HourFormat()
+//        self.endDate = selectedEvent.endTime.timeIn24HourFormat()
     }
     
     func delete() {
@@ -42,7 +43,14 @@ final class DetailEventViewModel: ObservableObject, Identifiable {
         }
     }
     
+    func updateView() {
+        eventName = selectedEvent.eventName
+        eventDate = selectedEvent.startTime.dateWithDayOfTheWeek()
+        startDate = selectedEvent.startTime.timeIn24HourFormat()
+        endDate = selectedEvent.endTime.timeIn24HourFormat()
+    }
+    
     func openCurrentEvent() {
-        coordinator.openEvent(selectedEvent.startTime, selectedEvent.eventName)
+        coordinator.openEvent(selectedEvent)
     }
 }

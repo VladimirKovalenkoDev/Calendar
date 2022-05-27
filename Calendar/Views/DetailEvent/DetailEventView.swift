@@ -52,16 +52,16 @@ struct DetailEventView: View {
             }
         }
         .navigationBarTitle("Event Details", displayMode: .inline)
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                Button {
-//                    viewModel.openCurrentEvent()
-//                } label: {
-//                    Image(systemName: "plus")
-//                        .foregroundColor(Color.red)
-//                }
-//            }
-//        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    viewModel.openCurrentEvent()
+                } label: {
+                    Text("Edit")
+                        .foregroundColor(Color.red)
+                }
+            }
+        }
     }
 }
 
