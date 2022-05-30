@@ -18,25 +18,12 @@ struct NewEventView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                Section() {
-                    TextField("Title",
-                              text: $viewModel.eventName)
-                }
-                Section() {
-                    VStack {
-                        DatePicker(
-                            "Starts",
-                            selection: $viewModel.startTime,
-                            displayedComponents: [.date, .hourAndMinute]
-                        )
-                        DatePicker(selection: $viewModel.endTime,
-                                   in: viewModel.startTime.addingTimeInterval(5*60)...) {
-                            Text("Ends")
-                        }
-                    }
-                }
-            }
+            BaseEventCreationView(
+                eventName: $viewModel.eventName,
+                startTime: $viewModel.startTime,
+                endTime: $viewModel.endTime,
+                range: viewModel.startTime.addingTimeInterval(5*60)
+            )
             .navigationTitle("New Event")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

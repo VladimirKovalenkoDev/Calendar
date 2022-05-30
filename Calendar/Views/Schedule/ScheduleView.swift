@@ -28,7 +28,6 @@ struct ScheduleView: View {
                 }
             }
             .onDisappear(perform: viewModel.viewDisappear)
-        
     }
     
     var content: some View {

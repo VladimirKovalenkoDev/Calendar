@@ -11,7 +11,7 @@ import CoreData
 class DetailEventCoordinator: ObservableObject, Identifiable {
     
     @Published var viewModel: DetailEventViewModel?
-    @Published var newEventViewModel: NewEventViewModel?
+    @Published var editEventViewModel: EditEventViewModel?
     
     private (set) var context: NSManagedObjectContext
     
@@ -27,11 +27,15 @@ class DetailEventCoordinator: ObservableObject, Identifiable {
         )
     }
     
-    func openEvent(_ chosenDate: Date, _ eventName: String) {
-        self.newEventViewModel = .init(
+    func openEvent(_ selectedEvent: EventViewModel) {
+        self.editEventViewModel = .init(
             context: context,
-            chosenDate: chosenDate,
-            eventName: eventName
+            selectedEvent: selectedEvent
         )
+//        self.newEventViewModel = .init(
+//            context: context,
+//            chosenDate: chosenDate,
+//            eventName: eventName
+//        )
     }
 }

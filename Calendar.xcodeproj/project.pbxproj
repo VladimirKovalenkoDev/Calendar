@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF8D0D5E28410AA300DA1A02 /* BaseEventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */; };
+		BF8D0D602841153100DA1A02 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D5F2841153100DA1A02 /* EditEventView.swift */; };
+		BF8D0D632841166100DA1A02 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */; };
 		BF9C6179283F7A1A00709088 /* CalendarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */; };
 		BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470A6280D3FE30093253F /* CalendarApp.swift */; };
 		BFA470AB280D3FE50093253F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA470AA280D3FE50093253F /* Assets.xcassets */; };
@@ -70,6 +73,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEventCreationView.swift; sourceTree = "<group>"; };
+		BF8D0D5F2841153100DA1A02 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewModel.swift; sourceTree = "<group>"; };
 		BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModelTests.swift; sourceTree = "<group>"; };
 		BFA470A3280D3FE30093253F /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA470A6280D3FE30093253F /* CalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarApp.swift; sourceTree = "<group>"; };
@@ -151,6 +157,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		BF8D0D612841153C00DA1A02 /* EditEvent */ = {
+			isa = PBXGroup;
+			children = (
+				BF8D0D5F2841153100DA1A02 /* EditEventView.swift */,
+			);
+			path = EditEvent;
+			sourceTree = "<group>";
+		};
 		BF9C6175283E7A2F00709088 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,10 +243,12 @@
 		BFA470D7280D470A0093253F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */,
 				BFA470E728117C370093253F /* Schedule */,
 				BFA4710E2816BDFD0093253F /* NewEvent */,
 				BFA471112817EF2C0093253F /* Calendar */,
 				BFF6A9E6283B8314007470C2 /* DetailEvent */,
+				BF8D0D612841153C00DA1A02 /* EditEvent */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +271,7 @@
 				BFCE216B2825256400671A51 /* EventViewModel.swift */,
 				BFF6A9E7283B833D007470C2 /* DetailEventViewModel.swift */,
 				BFCE216D282D632D00671A51 /* NewEventViewModel.swift */,
+				BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -546,6 +563,7 @@
 				BFA470F32812E1D70093253F /* NewEventView.swift in Sources */,
 				BFA470B3280D3FE50093253F /* Calendar.xcdatamodeld in Sources */,
 				BFF6A9CD2834F932007470C2 /* EventsBuilderProtocol.swift in Sources */,
+				BF8D0D602841153100DA1A02 /* EditEventView.swift in Sources */,
 				BFF6A9C52833DC57007470C2 /* EventLayoutView.swift in Sources */,
 				BFA471132817FB240093253F /* Constants.swift in Sources */,
 				BFA47117281818900093253F /* CalendarViewModel.swift in Sources */,
@@ -555,11 +573,13 @@
 				BFF6A9E5283B8303007470C2 /* DetailEventView.swift in Sources */,
 				BFCE216A2825200200671A51 /* BaseModel.swift in Sources */,
 				BFA470E3280D4D8B0093253F /* CoreManager.swift in Sources */,
+				BF8D0D632841166100DA1A02 /* EditEventViewModel.swift in Sources */,
 				BFF6A9CF2834FADC007470C2 /* EventsBuilder.swift in Sources */,
 				BFF6A9ED283B89B8007470C2 /* DetailEventCoordinatorView.swift in Sources */,
 				BFA470DC280D48680093253F /* CurrentTimeView.swift in Sources */,
 				BFF6A9C12833A6A9007470C2 /* DrawableEventModel.swift in Sources */,
 				BFA470DA280D48560093253F /* ScheduleRowView.swift in Sources */,
+				BF8D0D5E28410AA300DA1A02 /* BaseEventCreationView.swift in Sources */,
 				BFF6A9D7283540BC007470C2 /* CalendarCoordinatorView.swift in Sources */,
 				BFA470EC281186760093253F /* Extension+Date.swift in Sources */,
 				BFF6A9E8283B833D007470C2 /* DetailEventViewModel.swift in Sources */,

@@ -12,14 +12,14 @@ struct DetailEventCoordinatorView: View {
     @ObservedObject var coordinator: DetailEventCoordinator
     
     var body: some View {
-        DetailEventView(viewModel: coordinator.viewModel!)
-//            .sheet(item: $coordinator.newEventViewModel) {
-//                //viewModel.dismiss()
-//            } content: {
-//                NewEventView(viewModel: $0)
-//            }
+        if let viewModel = coordinator.viewModel {
+            DetailEventView(viewModel: viewModel)
+                .sheet(item: $coordinator.editEventViewModel) {
+                    viewModel.updateView()
+                } content: {
+                    EditEventView(viewModel: $0)
+                }
+        }
     }
-    
-    
 }
 

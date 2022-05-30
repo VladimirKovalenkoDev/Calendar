@@ -88,7 +88,7 @@ extension ScheduleViewModel: NSFetchedResultsControllerDelegate {
     }
 }
 
-// MARK: - private mathods
+// MARK: - private methods
 extension ScheduleViewModel {
     private func getCurrentTimePosition(date: Date) -> Float {
         let calendar = Calendar.current
