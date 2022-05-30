@@ -29,10 +29,6 @@ final class DetailEventViewModel: ObservableObject, Identifiable {
         self.selectedEvent = selectedEvent
         self.coordinator = coordinator
         updateView()
-//        self.eventName = selectedEvent.eventName
-//        self.eventDate = selectedEvent.startTime.dateWithDayOfTheWeek()
-//        self.startDate = selectedEvent.startTime.timeIn24HourFormat()
-//        self.endDate = selectedEvent.endTime.timeIn24HourFormat()
     }
     
     func delete() {

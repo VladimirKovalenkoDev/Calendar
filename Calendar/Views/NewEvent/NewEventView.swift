@@ -24,18 +24,6 @@ struct NewEventView: View {
                 endTime: $viewModel.endTime,
                 range: viewModel.startTime.addingTimeInterval(5*60)
             )
-//            Form {
-//                Section() {
-//                    TextField("Title",
-//                              text: $viewModel.eventName)
-//                }
-//                Section() {
-//                    VStack {
-//                        StartDatePicker(startTime: $viewModel.startTime)
-//                        EndDatePicker(endTime: $viewModel.endTime, range: viewModel.startTime.addingTimeInterval(5*60))
-//                    }
-//                }
-//            }
             .navigationTitle("New Event")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

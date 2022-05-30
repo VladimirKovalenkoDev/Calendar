@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Combine
 
 final class EditEventViewModel: ObservableObject, Identifiable {
     
@@ -16,6 +17,9 @@ final class EditEventViewModel: ObservableObject, Identifiable {
     
     private (set) var context: NSManagedObjectContext
     private var selectedEvent: EventViewModel
+    private var mapper: EventsMapperProtocol
+    private var cancellable: Cancellable?
+    private var duration: Float
     
     init(
         context: NSManagedObjectContext,
@@ -26,6 +30,9 @@ final class EditEventViewModel: ObservableObject, Identifiable {
         self.eventName = selectedEvent.eventName
         self.startTime = selectedEvent.startTime
         self.endTime = selectedEvent.endTime
+        self.mapper = EventsMapper.shared
+        self.duration = mapper.getDrawableEvent(event: selectedEvent).duration
+        endTimeCorrection()
     }
     
     func edit() {
@@ -39,5 +46,18 @@ final class EditEventViewModel: ObservableObject, Identifiable {
             print("Error in editing \(error)")
         }
     }
+}
+
+// MARK: - private methods
+extension EditEventViewModel {
     
+    private func endTimeCorrection() {
+        cancellable = $startTime.combineLatest($endTime).sink(receiveValue: { [weak self] value in
+            guard let self = self else { return }
+            self.endTime = value.0.addingTimeInterval(Double(self.duration) * 3600)
+            let start = self.mapper.getHour(date: self.startTime) + self.mapper.getMinute(date: self.startTime) / 60
+            let end = self.mapper.getHour(date: value.1) + self.mapper.getMinute(date: value.1) / 60
+            self.duration = end - start
+        })
+    }
 }
