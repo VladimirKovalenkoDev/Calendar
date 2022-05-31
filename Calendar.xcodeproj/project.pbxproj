@@ -10,6 +10,7 @@
 		BF8D0D5E28410AA300DA1A02 /* BaseEventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */; };
 		BF8D0D602841153100DA1A02 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D5F2841153100DA1A02 /* EditEventView.swift */; };
 		BF8D0D632841166100DA1A02 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */; };
+		BF8D0D8A284614B900DA1A02 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF8D0D88284614B900DA1A02 /* Localizable.strings */; };
 		BF9C6179283F7A1A00709088 /* CalendarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */; };
 		BFA470A7280D3FE30093253F /* CalendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA470A6280D3FE30093253F /* CalendarApp.swift */; };
 		BFA470AB280D3FE50093253F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFA470AA280D3FE50093253F /* Assets.xcassets */; };
@@ -76,6 +77,8 @@
 		BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEventCreationView.swift; sourceTree = "<group>"; };
 		BF8D0D5F2841153100DA1A02 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewModel.swift; sourceTree = "<group>"; };
+		BF8D0D89284614B900DA1A02 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF8D0D8B284614BE00DA1A02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF9C6178283F7A1A00709088 /* CalendarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModelTests.swift; sourceTree = "<group>"; };
 		BFA470A3280D3FE30093253F /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFA470A6280D3FE30093253F /* CalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarApp.swift; sourceTree = "<group>"; };
@@ -175,6 +178,7 @@
 		BFA4709A280D3FE30093253F = {
 			isa = PBXGroup;
 			children = (
+				BF8D0D88284614B900DA1A02 /* Localizable.strings */,
 				BFA470A5280D3FE30093253F /* Calendar */,
 				BFA470BB280D3FE50093253F /* CalendarTests */,
 				BFA470C5280D3FE50093253F /* CalendarUITests */,
@@ -506,6 +510,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = BFA4709A280D3FE30093253F;
 			productRefGroup = BFA470A4280D3FE30093253F /* Products */;
@@ -525,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFA470AE280D3FE50093253F /* Preview Assets.xcassets in Resources */,
+				BF8D0D8A284614B900DA1A02 /* Localizable.strings in Resources */,
 				BFA470AB280D3FE50093253F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,11 +632,25 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		BF8D0D88284614B900DA1A02 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF8D0D89284614B900DA1A02 /* ru */,
+				BF8D0D8B284614BE00DA1A02 /* en */,
+			);
+			name = Localizable.strings;
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		BFA470CA280D3FE50093253F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -692,6 +712,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -754,6 +775,7 @@
 				DEVELOPMENT_TEAM = PR437U27Q7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calendar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -784,6 +806,7 @@
 				DEVELOPMENT_TEAM = PR437U27Q7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calendar/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

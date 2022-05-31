@@ -33,7 +33,8 @@ struct BaseEventCreationView: View {
     }
     
     @ViewBuilder
-    func StartDatePicker(startTime: Binding<Date>) -> some View {
+    func StartDatePicker(startTime: Binding<Date>
+    ) -> some View {
         DatePicker(
             "Starts",
             selection: startTime,
@@ -46,11 +47,12 @@ struct BaseEventCreationView: View {
                        range: Date
     ) -> some View {
         DatePicker(
-            "Ends",
             selection: endTime,
             in: range...,
             displayedComponents: [.date, .hourAndMinute]
-        )
+        ) {
+                Text("Ends")
+            }
     }
 }
 
