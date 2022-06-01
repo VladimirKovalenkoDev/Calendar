@@ -8,20 +8,16 @@
 import Foundation
 import Combine
 import CoreData
-import SwiftUI
 
 final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     
     @Published var chosenDate: Date
-    @Published var isPresented: Bool = false
     @Published var currentTimeHourPosition: Float = Float()
     @Published var currentDate: Date = .init()
     @Published var drawableArrayEvents = [[DrawableEventModel]]()
     @Published var drawableEvents = [DrawableEventModel]()
     
     private var events = [EventViewModel]()
-    private let builder: EventsBulderProtocol
-    private let mapper: EventsMapperProtocol
     private let fetchedResultsController: NSFetchedResultsController<Events>
     private var timeSubscriber: Cancellable?
     private var timer: Timer.TimerPublisher = Timer.publish(every: 0, on: .main, in: .common)
@@ -29,13 +25,9 @@ final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     
     init(
          chosenDate: Date,
-         coordinator: SchedulerCoordinator,
-         builder: EventsBulderProtocol,
-         mapper: EventsMapperProtocol
+         coordinator: SchedulerCoordinator
     ) {
         self.chosenDate = chosenDate
-        self.mapper = mapper
-        self.builder = builder
         self.coordinator = coordinator
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: Events.all,
@@ -115,10 +107,10 @@ extension ScheduleViewModel {
         }
     }
     
-    private func makeDrawable(events: [EventViewModel]){
+    private func makeDrawable(events: [EventViewModel]) {
         events.forEach { event in
-            self.drawableEvents.append(mapper.getDrawableEvent(event: event))
+            self.drawableEvents.append(coordinator.mapper.getDrawableEvent(event: event))
         }
-        self.drawableArrayEvents = builder.getSortedEvents(events: self.drawableEvents)
+        self.drawableArrayEvents = coordinator.builder.getSortedEvents(events: self.drawableEvents)
     }
 }

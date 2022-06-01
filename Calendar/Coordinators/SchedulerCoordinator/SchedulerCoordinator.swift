@@ -16,21 +16,21 @@ class SchedulerCoordinator: ObservableObject, Identifiable {
     
     private var parent: CalendarCoordinator
     private (set) var context: NSManagedObjectContext
+    let mapper: EventsMapperProtocol
+    let builder: EventsBulderProtocol
     
     init(
         context: NSManagedObjectContext,
         date: Date,
-        parent: CalendarCoordinator,
-        builder: EventsBulderProtocol,
-        mapper: EventsMapperProtocol
+        parent: CalendarCoordinator
     ) {
         self.parent = parent
         self.context = context
+        self.mapper = EventsMapper.shared
+        self.builder = EventsBuilder.shared
         self.viewModel = .init(
             chosenDate: date,
-            coordinator: self,
-            builder: builder,
-            mapper: mapper
+            coordinator: self
         )
     }
     

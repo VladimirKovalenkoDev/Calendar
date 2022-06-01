@@ -31,6 +31,25 @@ final class NewEventViewModel: ObservableObject, Identifiable {
         changeEndTimeValue()
         makeStartTime()
     }
+        
+    func save() {
+        do {
+            let event = Events(context: context)
+            if eventName == "" {
+                self.eventName = "New Event"
+            }
+            event.eventName = eventName
+            event.startTime = startTime
+            event.endTime = endTime
+            event.eventDate = startTime.onlyDateFormat()
+            try event.save()
+        } catch {
+            print("Saving Error: \(error)")
+        }
+    }
+}
+
+extension NewEventViewModel {
     
     private func makeStartTime() {
         let calendar = Calendar.current
@@ -49,21 +68,5 @@ final class NewEventViewModel: ObservableObject, Identifiable {
         cancellable = $startTime.sink(receiveValue: { value in
             self.endTime = value
         })
-    }
-    
-    func save() {
-        do {
-            let event = Events(context: context)
-            if eventName == "" {
-                self.eventName = "New Event"
-            }
-            event.eventName = eventName
-            event.startTime = startTime
-            event.endTime = endTime
-            event.eventDate = startTime.onlyDateFormat()
-            try event.save()
-        } catch {
-            print("Saving Error: \(error)")
-        }
     }
 }
