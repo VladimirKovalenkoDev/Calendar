@@ -28,6 +28,14 @@ struct CalendarView: View {
                         .foregroundColor(Color.red)
                 }
             }
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    viewModel.showToday()
+                } label: {
+                    Text("Today")
+                        .foregroundColor(Color.red)
+                }
+            }
         }
     }
     

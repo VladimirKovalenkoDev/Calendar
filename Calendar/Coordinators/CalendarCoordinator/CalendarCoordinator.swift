@@ -25,14 +25,10 @@ class CalendarCoordinator: ObservableObject, Identifiable {
     }
     
     func open(_ date: Date) {
-        let mapper = EventsMapper.shared
-        let builder = EventsBuilder.shared
         self.scheduleCoordinator = .init(
             context: context,
             date: date,
-            parent: self,
-            builder: builder,
-            mapper: mapper
+            parent: self
         )
     }
     

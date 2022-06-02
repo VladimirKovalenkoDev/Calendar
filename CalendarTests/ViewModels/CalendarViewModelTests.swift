@@ -11,6 +11,7 @@ import Foundation
 @testable import Calendar
 
 class CalendarViewModelTests: XCTestCase {
+    
     private let context = CoreManager.shared.container.viewContext
     private let calendar = Calendar.current
     private let date = Date()
