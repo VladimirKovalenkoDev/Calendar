@@ -84,7 +84,7 @@ struct ScheduleView: View {
                     title: drawEvent.name,
                     color: Color.red,
                     width: columnWidth,
-                    height: CGFloat(86 * drawEvent.duration)
+                    height: CGFloat(86 * viewModel.setHeight(duration: drawEvent.duration))
                 )
                     .frame(width: columnWidth,
                            height: CGFloat(86 * drawEvent.duration))

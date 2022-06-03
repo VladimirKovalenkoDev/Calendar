@@ -23,13 +23,13 @@ struct EventLayoutView: View {
             .overlay(
                 GeometryReader { _ in
                     Text(title)
-                        .padding(.top, 5)
+                        .padding(.top, 4)
                         .padding(.leading, 8)
                         .padding(.bottom, 3)
-                        .font(.system(size: 18))
+                        .font(.system(size: 20))
                         .frame(width: width,
                                alignment: .leading)
-                        .minimumScaleFactor(0.2)
+                        .minimumScaleFactor(0.5)
                         .lineLimit(1)
                 }
             )
@@ -39,7 +39,7 @@ struct EventLayoutView: View {
 struct EventLayoutView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EventLayoutView(title: "name", color: Color.red, width: 200, height: 800)
+            EventLayoutView(title: "New Event", color: Color.red, width: 200, height: 15)
         }
     }
 }

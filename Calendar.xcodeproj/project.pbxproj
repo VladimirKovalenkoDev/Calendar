@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF70273F2848BB91009456B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF70273D2848BB91009456B8 /* InfoPlist.strings */; };
 		BF8D0D5E28410AA300DA1A02 /* BaseEventCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */; };
 		BF8D0D602841153100DA1A02 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D5F2841153100DA1A02 /* EditEventView.swift */; };
 		BF8D0D632841166100DA1A02 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF70273E2848BB91009456B8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEventCreationView.swift; sourceTree = "<group>"; };
 		BF8D0D5F2841153100DA1A02 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		BF8D0D622841166100DA1A02 /* EditEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		BFA4709A280D3FE30093253F = {
 			isa = PBXGroup;
 			children = (
+				BF70273D2848BB91009456B8 /* InfoPlist.strings */,
 				BF8D0D88284614B900DA1A02 /* Localizable.strings */,
 				BFA470A5280D3FE30093253F /* Calendar */,
 				BFA470BB280D3FE50093253F /* CalendarTests */,
@@ -531,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFA470AE280D3FE50093253F /* Preview Assets.xcassets in Resources */,
+				BF70273F2848BB91009456B8 /* InfoPlist.strings in Resources */,
 				BF8D0D8A284614B900DA1A02 /* Localizable.strings in Resources */,
 				BFA470AB280D3FE50093253F /* Assets.xcassets in Resources */,
 			);
@@ -637,6 +641,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BF70273D2848BB91009456B8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF70273E2848BB91009456B8 /* ru */,
+			);
+			name = InfoPlist.strings;
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		BF8D0D88284614B900DA1A02 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
