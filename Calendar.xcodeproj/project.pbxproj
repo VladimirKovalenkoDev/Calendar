@@ -78,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF0EE1DA285888E20065E1E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF70273E2848BB91009456B8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF8D0D5D28410AA300DA1A02 /* BaseEventCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEventCreationView.swift; sourceTree = "<group>"; };
 		BF8D0D5F2841153100DA1A02 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
@@ -645,6 +646,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF70273E2848BB91009456B8 /* ru */,
+				BF0EE1DA285888E20065E1E9 /* en */,
 			);
 			name = InfoPlist.strings;
 			path = Calendar;
