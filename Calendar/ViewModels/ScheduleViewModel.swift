@@ -70,6 +70,13 @@ final class ScheduleViewModel: NSObject, ObservableObject, Identifiable {
     func openDetailEvent(_ selectedEvent: EventViewModel) {
         self.coordinator.openDetailEvent(selectedEvent)
     }
+    
+    func setHeight(duration: Float) -> Float {
+        if duration < 0.1 {
+            return 0.16
+        }
+        return duration
+    }
 }
 
 extension ScheduleViewModel: NSFetchedResultsControllerDelegate {

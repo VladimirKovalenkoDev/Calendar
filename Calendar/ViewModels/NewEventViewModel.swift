@@ -66,7 +66,7 @@ extension NewEventViewModel {
     
     private func changeEndTimeValue() {
         cancellable = $startTime.sink(receiveValue: { value in
-            self.endTime = value
+            self.endTime = value.addingTimeInterval(5*60)
         })
     }
 }
