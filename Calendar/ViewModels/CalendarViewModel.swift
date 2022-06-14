@@ -16,7 +16,6 @@ final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
     
     private let fetchedResultsController: NSFetchedResultsController<Events>
     private unowned let coordinator: CalendarCoordinator
-    private let today: Date = .init()
     
     init(
         coordinator: CalendarCoordinator
@@ -100,8 +99,8 @@ final class CalendarViewModel: NSObject, ObservableObject, Identifiable {
     }
     
     func showToday() {
-        openSchedule(today)
-        currentDate = today
+        openSchedule(Date())
+        currentDate = Date()
     }
 }
 
